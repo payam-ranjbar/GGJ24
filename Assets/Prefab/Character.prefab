@@ -215,7 +215,6 @@ GameObject:
   - component: {fileID: 3529312000318776622}
   - component: {fileID: 6414187014097652635}
   - component: {fileID: 8140922282989108290}
-  - component: {fileID: 4163532996577706424}
   m_Layer: 6
   m_Name: Character
   m_TagString: Untagged
@@ -267,13 +266,12 @@ MonoBehaviour:
   _maxHealth: 1
   _rotationSpeed: 500
   _slapCooldown: 0.3
-  _slapDuration: 3
-  _slapSpeed: 40
+  _slapDuration: 0.5
+  _slapSpeed: 80
   _rootIdentifier: {fileID: 3529312000318776622}
   _rigidbody: {fileID: 4100933173266524458}
   _slapEventReceiver: {fileID: 2670699082787874532}
   movementDirection: {x: 0, y: 0}
-  applyMovement: 1
 --- !u!114 &8140922282989108290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,28 +286,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rootIdentifier: {fileID: 3529312000318776622}
   _characterController: {fileID: 6414187014097652635}
---- !u!195 &4163532996577706424
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3200062805358102804}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!1 &3660139557279663404
 GameObject:
   m_ObjectHideFlags: 0

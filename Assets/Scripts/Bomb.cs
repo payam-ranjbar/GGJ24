@@ -52,8 +52,11 @@ public class Bomb : MonoBehaviour
             Position = transform.position
         });
 
-        AudioManager.Instance.Play(AudioCommand.BombExplosion);
-        
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.Play(AudioCommand.BombExplosion);
+        }
+
         Destroy(gameObject);
         Debug.Log("Exploded by count down!");
     }

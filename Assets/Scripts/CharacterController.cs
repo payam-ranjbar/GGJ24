@@ -27,7 +27,6 @@ public class CharacterController : MonoBehaviour
     private CollisionEventReceiver _slapEventReceiver;
     
     public Vector2 movementDirection = Vector2.zero;
-    public bool applyMovement = true;
     public new Transform transform => _rigidbody.transform;
     public Rigidbody rigidbody => _rigidbody;
 
@@ -36,6 +35,8 @@ public class CharacterController : MonoBehaviour
     private float _slapRemainingTime = 0.0f;
     private Vector2 _slapDirection = Vector2.zero;
     private float _slapCooldownEndTime = -1000.0f;
+
+    private Quaternion _rotation = Quaternion.identity;
 
     private void OnValidate()
     {
@@ -85,11 +86,12 @@ public class CharacterController : MonoBehaviour
             SetVelocity(_slapDirection * _speed);
             UpdateRotation(deltaTime, _slapDirection);
         }
-        else if (applyMovement == true)
+        else
         {
             UpdateRotation(deltaTime, movementDirection);
             SetVelocity(movementDirection * _speed);
         }
+        _rigidbody.rotation = _rotation;
     }
 
     private void SetVelocity(Vector2 velocity)
@@ -101,12 +103,13 @@ public class CharacterController : MonoBehaviour
     {
         if (direction.sqrMagnitude > 0)
         {
-            _rigidbody.rotation = Quaternion.RotateTowards(
-                _rigidbody.rotation,
+            _rotation = Quaternion.RotateTowards(
+                _rotation,
                 Quaternion.LookRotation(new Vector3(direction.x, 0.0f, direction.y)),
                 deltaTime * _rotationSpeed
             );
         }
+
     }
 
     public void TeleportPosition(Vector3 position)
@@ -137,11 +140,11 @@ public class CharacterController : MonoBehaviour
         _slapCooldownEndTime = now + _slapCooldown;
         foreach (var otherCharacter in _slapCharacters)
         {
-            otherCharacter.OnSlapped(transform.forward);
+            otherCharacter.OnSlapped(new Vector2(transform.forward.x, transform.forward.z));
         }
     }
 
-    public void OnSlapped(Vector3 direction)
+    public void OnSlapped(Vector2 direction)
     {
         _slapRemainingTime = _slapDuration;
         _slapDirection = direction;
