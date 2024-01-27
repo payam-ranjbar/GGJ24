@@ -30,6 +30,9 @@
 # Gradle
 .idea/**/gradle.xml
 .idea/**/libraries
+.idea
+.vs
+.vs/*
 
 # Gradle and Maven with auto-import
 # When using Gradle or Maven with auto-import, you should exclude module files,
@@ -243,7 +246,6 @@ StyleCopReport.xml
 *_p.c
 *_h.h
 *.ilk
-#*.meta
 *.obj
 *.iobj
 *.pch
@@ -557,4 +559,5 @@ FodyWeavers.xsd
 ### VisualStudio Patch ###
 # Additional files built by Visual Studio
 
+*.DS_Store
 # End of https://www.toptal.com/developers/gitignore/api/unity,rider,visualstudio,visualstudiocode
