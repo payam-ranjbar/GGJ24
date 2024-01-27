@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Matchbox;
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterAnimation))]
 public class CharacterController : MonoBehaviour
 {
     [Header("Gameplay")]
@@ -34,7 +35,7 @@ public class CharacterController : MonoBehaviour
     private CollisionEventReceiver _bombPickupEventReceiver;
     [SerializeField]
     private Transform _bombAttachTransform;
-    
+
     public Vector2 movementDirection = Vector2.zero;
     public new Transform transform => _rigidbody.transform;
     public Rigidbody rigidbody => _rigidbody;
@@ -51,6 +52,8 @@ public class CharacterController : MonoBehaviour
     private Bomb _bomb = null;
     
     private bool _destroyed = false;
+    
+    private CharacterAnimation _characterAnimation;
 
     private void OnValidate()
     {
@@ -70,6 +73,7 @@ public class CharacterController : MonoBehaviour
 
     private void Awake()
     {
+        _characterAnimation = GetComponent<CharacterAnimation>();
         OnValidate();
     }
 
@@ -108,6 +112,14 @@ public class CharacterController : MonoBehaviour
     private void SetVelocity(Vector2 velocity)
     {
         _rigidbody.velocity = new Vector3(velocity.x, _rigidbody.velocity.y, velocity.y);
+        if (_rigidbody.velocity != Vector3.zero)
+        {
+            _characterAnimation.Run();
+        }
+        else
+        {
+            _characterAnimation.Idle();
+        }
     }
 
     private void UpdateRotation(float deltaTime, Vector3 direction)
@@ -155,6 +167,7 @@ public class CharacterController : MonoBehaviour
         }
         else
         {
+            _characterAnimation.Slap();
             foreach (var otherCharacter in _slapCharacters)
             {
                 otherCharacter.OnSlapped(new Vector2(transform.forward.x, transform.forward.z));
@@ -166,6 +179,7 @@ public class CharacterController : MonoBehaviour
     {
         _slapRemainingTime = _slapDuration;
         _slapDirection = direction;
+        _characterAnimation.Pushed();
     }
 
     private void SlapTriggerEnter(Collider collider)
