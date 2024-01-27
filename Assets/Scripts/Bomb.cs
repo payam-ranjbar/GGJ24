@@ -86,12 +86,17 @@ public class Bomb : MonoBehaviour
             AudioManager.Instance.Play(AudioCommand.BombExplosion);
         }
         
+        TakeDamage();
+
+        Destroy(gameObject);
+        Debug.Log("Exploded by count down!");
+    }
+
+    private void TakeDamage()
+    {
         foreach (var otherCharacter in _charactersInBlastZone)
         {
             otherCharacter.TakeDamage(ExplosionForce);
         }
-
-        Destroy(gameObject);
-        Debug.Log("Exploded by count down!");
     }
 }
