@@ -120,6 +120,37 @@ Transform:
   - {fileID: 577076984849835659}
   m_Father: {fileID: 5152654036384079999}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1990683398464659489
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6979625725632973396}
+  m_Layer: 6
+  m_Name: bombAttachTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6979625725632973396
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990683398464659489}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5152654036384079999}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2694671113970512356
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,9 +326,13 @@ MonoBehaviour:
   _slapCooldown: 1
   _slapDuration: 0.1
   _slapSpeed: 30
+  _bombThrowSpeed: 10
+  _bombThrowUpFactor: 0.6
   _rootIdentifier: {fileID: 1310049997902871773}
   _rigidbody: {fileID: 4100933173266524458}
   _slapEventReceiver: {fileID: 4603919471776829835}
+  _bombPickupEventReceiver: {fileID: 1240975940526495746}
+  _bombAttachTransform: {fileID: 6979625725632973396}
   movementDirection: {x: 0, y: 0}
 --- !u!1 &3536131045329772717
 GameObject:
@@ -399,6 +434,7 @@ Transform:
   - {fileID: 948364893775332567}
   - {fileID: 1285811137359353511}
   - {fileID: 1602357136496722071}
+  - {fileID: 6979625725632973396}
   m_Father: {fileID: 2419371307864549179}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &4100933173266524458

@@ -17,6 +17,11 @@ public class CharacterController : MonoBehaviour
     private float _slapDuration = 1.0f;
     [SerializeField]
     private float _slapSpeed = 40.0f;
+    [SerializeField] 
+    private float _bombThrowSpeed = 20.0f;
+    [SerializeField]
+    [Range(0.0f, 1.0f)]
+    private float _bombThrowUpFactor = 0.5f;
     
     [Header("References")]
     [SerializeField]
@@ -25,10 +30,15 @@ public class CharacterController : MonoBehaviour
     private Rigidbody _rigidbody;
     [SerializeField]
     private CollisionEventReceiver _slapEventReceiver;
+    [SerializeField]
+    private CollisionEventReceiver _bombPickupEventReceiver;
+    [SerializeField]
+    private Transform _bombAttachTransform;
     
     public Vector2 movementDirection = Vector2.zero;
     public new Transform transform => _rigidbody.transform;
     public Rigidbody rigidbody => _rigidbody;
+    public Transform bombAttackTransform => _bombAttachTransform;
 
     private List<CharacterController> _slapCharacters = new List<CharacterController>();
 
@@ -37,6 +47,8 @@ public class CharacterController : MonoBehaviour
     private float _slapCooldownEndTime = -1000.0f;
 
     private Quaternion _rotation = Quaternion.identity;
+
+    private Bomb _bomb = null;
 
     private void OnValidate()
     {
@@ -51,11 +63,6 @@ public class CharacterController : MonoBehaviour
             {
                 _rigidbody = _rootIdentifier.GetComponentInChildren<Rigidbody>();
             }
-
-            if (_slapEventReceiver == null)
-            {
-                _slapEventReceiver = _rootIdentifier.GetComponentInChildren<CollisionEventReceiver>();
-            }
         }
     }
 
@@ -69,6 +76,8 @@ public class CharacterController : MonoBehaviour
     {
         _slapEventReceiver.triggerEnterAction += SlapTriggerEnter;
         _slapEventReceiver.triggerExitAction += SlapTriggerExit;
+
+        _bombPickupEventReceiver.triggerEnterAction += BombPickupTriggerEnter;
     }
 
     private void Update()
@@ -138,9 +147,16 @@ public class CharacterController : MonoBehaviour
             return;
         }
         _slapCooldownEndTime = now + _slapCooldown;
-        foreach (var otherCharacter in _slapCharacters)
+        if (_bomb != null)
         {
-            otherCharacter.OnSlapped(new Vector2(transform.forward.x, transform.forward.z));
+            _bomb.Throw((transform.forward * (1.0f - _bombThrowUpFactor) + transform.up * _bombThrowUpFactor).normalized, _bombThrowSpeed);
+        }
+        else
+        {
+            foreach (var otherCharacter in _slapCharacters)
+            {
+                otherCharacter.OnSlapped(new Vector2(transform.forward.x, transform.forward.z));
+            }
         }
     }
 
@@ -170,6 +186,28 @@ public class CharacterController : MonoBehaviour
         {
             var otherCharacter = referenceHolder.GetReferenceComponent<CharacterController>();
             _slapCharacters.Remove(otherCharacter);
+        }
+    }
+
+    private void BombPickupTriggerEnter(Collider collider)
+    {
+        var referenceHolder = collider.GetComponent<ReferenceHolder>();
+        if (referenceHolder != null)
+        {
+            var bomb = referenceHolder.GetReferenceComponent<Bomb>();
+            if (_bomb == null)
+            {
+                bomb.Attach(this);
+                _bomb = bomb;
+            }
+        }
+    }
+
+    public void BombDetached(Bomb bomb)
+    {
+        if (_bomb == bomb)
+        {
+            _bomb = null;
         }
     }
 
