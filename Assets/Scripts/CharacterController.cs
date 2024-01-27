@@ -173,4 +173,23 @@ public class CharacterController : MonoBehaviour
         }
     }
 
+    public void TakeDamage(float damage)
+    {
+        _maxHealth -= damage;
+        if (_maxHealth <= 0)
+        {
+            Die();
+        }
+    }
+    
+    private void Die()
+    {
+        Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        _slapEventReceiver.triggerEnterAction -= SlapTriggerEnter;
+        _slapEventReceiver.triggerExitAction -= SlapTriggerExit;
+    }
 }
