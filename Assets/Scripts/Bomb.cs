@@ -1,4 +1,5 @@
 using System;
+using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,7 +10,7 @@ public class Bomb : MonoBehaviour
     public float ExplosionRadius = 1f;
     
     public event Action<Explosion> Exploded;
-    public UnityEvent<Bomb> ExplodedEvent;
+    public UnityEvent<Explosion> ExplodedEvent;
     
     private float _currentLifeTime;
 
@@ -50,6 +51,9 @@ public class Bomb : MonoBehaviour
             Radius = ExplosionRadius,
             Position = transform.position
         });
+
+        AudioManager.Instance.Play(AudioCommand.BombExplosion);
+        
         Destroy(gameObject);
         Debug.Log("Exploded by count down!");
     }
