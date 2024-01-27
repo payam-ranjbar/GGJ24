@@ -17,7 +17,7 @@ public class CharacterController : MonoBehaviour
     private float _slapDuration = 1.0f;
     [SerializeField]
     private float _slapSpeed = 40.0f;
-
+    
     [Header("References")]
     [SerializeField]
     private RootIdentifier _rootIdentifier;
@@ -83,7 +83,7 @@ public class CharacterController : MonoBehaviour
         if (_slapRemainingTime > 0)
         {
             _slapRemainingTime -= deltaTime;
-            SetVelocity(_slapDirection * _speed);
+            SetVelocity(_slapDirection * _slapSpeed);
             UpdateRotation(deltaTime, _slapDirection);
         }
         else
