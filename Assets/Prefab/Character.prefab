@@ -327,7 +327,7 @@ MonoBehaviour:
   _slapCooldown: 1
   _slapDuration: 0.1
   _slapSpeed: 30
-  _bombThrowSpeed: 10
+  _bombThrowSpeed: 25
   _bombThrowUpFactor: 0.6
   _rootIdentifier: {fileID: 1310049997902871773}
   _rigidbody: {fileID: 4100933173266524458}

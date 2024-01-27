@@ -10,6 +10,7 @@ public class Bomb : MonoBehaviour
     public int LifeTime = 10; // In seconds
     public float ExplosionForce = 1000f;
     public float ExplosionRadius = 1f;
+    [SerializeField] private float _gravity = 100.0f;
 
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private CollisionEventReceiver _charactersReceiver;
@@ -67,11 +68,16 @@ public class Bomb : MonoBehaviour
 
     private void Update()
     {
+        var deltaTime = Time.deltaTime;
         Countdown();
         if (_character != null)
         {
             _rigidbody.MovePosition(_character.bombAttackTransform.position);
             _rigidbody.velocity = Vector3.zero;
+        }
+        else
+        {
+            _rigidbody.velocity -= Vector3.up * _gravity * deltaTime * _rigidbody.mass;
         }
     }
 
