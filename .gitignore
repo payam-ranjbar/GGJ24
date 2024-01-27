@@ -73,3 +73,5 @@ crashlytics-build.properties
 
 #Switch temps
 /SwitchIL2CPPCache/
+*.DS_Store
+**/.idea

@@ -137,7 +137,7 @@ public class Bomb : MonoBehaviour
     {
         foreach (var otherCharacter in _charactersInBlastZone)
         {
-            otherCharacter.TakeDamage(ExplosionForce);
+            var damageTaken = otherCharacter.TakeDamage(ExplosionForce);
         }
     }
 }

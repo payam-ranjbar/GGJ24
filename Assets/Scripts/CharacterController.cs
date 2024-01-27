@@ -49,6 +49,8 @@ public class CharacterController : MonoBehaviour
     private Quaternion _rotation = Quaternion.identity;
 
     private Bomb _bomb = null;
+    
+    private bool _destroyed = false;
 
     private void OnValidate()
     {
@@ -211,17 +213,24 @@ public class CharacterController : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage)
+    public bool TakeDamage(float damage)
     {
+        if (_destroyed)
+        {
+            return false;
+        }
+        
         _maxHealth -= damage;
         if (_maxHealth <= 0)
         {
             Die();
         }
+        return true;
     }
     
     private void Die()
     {
+        _destroyed = true;
         Destroy(gameObject);
     }
 
