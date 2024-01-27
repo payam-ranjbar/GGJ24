@@ -4,7 +4,6 @@ using DefaultNamespace;
 using Matchbox;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.TextCore.Text;
 
 public class Bomb : MonoBehaviour
 {
@@ -23,6 +22,13 @@ public class Bomb : MonoBehaviour
 
     private CharacterController _character = null;
 
+    private void Awake()
+    {
+        OnValidate();
+       _charactersReceiver.triggerEnterAction += OnCharacterTriggerEnter;
+       _charactersReceiver.triggerExitAction += OnCharacterTriggerExit;
+    }
+
     private void OnValidate()
     {
         if (_rigidbody == null)
@@ -31,23 +37,13 @@ public class Bomb : MonoBehaviour
         }
     }
 
-    private void Awake()
-    {
-        OnValidate();;
-       _charactersReceiver.triggerEnterAction += OnCharacterTriggerEnter;
-       _charactersReceiver.triggerExitAction += OnCharacterTriggerExit;
-    }
-
     private void OnCharacterTriggerExit(Collider collider)
     {
         var referenceHolder = collider.GetComponent<ReferenceHolder>();
         if (referenceHolder != null)
         {
             var otherCharacter = referenceHolder.GetReferenceComponent<CharacterController>();
-            if (otherCharacter != this)
-            {
-                _charactersInBlastZone.Add(otherCharacter);
-            }
+            _charactersInBlastZone.Remove(otherCharacter);
         }
     }
 
@@ -57,7 +53,10 @@ public class Bomb : MonoBehaviour
         if (referenceHolder != null)
         {
             var otherCharacter = referenceHolder.GetReferenceComponent<CharacterController>();
-            _charactersInBlastZone.Remove(otherCharacter);
+            if (otherCharacter != this)
+            {
+                _charactersInBlastZone.Add(otherCharacter);
+            }
         }
     }
 
