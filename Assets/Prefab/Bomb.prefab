@@ -83,6 +83,74 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2482142247095798437}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &3663030502900520546
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 638238990691658542}
+  - component: {fileID: 1793636682115996681}
+  - component: {fileID: 4838909721517490080}
+  m_Layer: 7
+  m_Name: Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &638238990691658542
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3663030502900520546}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8390961116866286312}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1793636682115996681
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3663030502900520546}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4838909721517490080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3663030502900520546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc15570bf67d9466ca0e1ecdf20bba03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  References:
+  - {fileID: 4583997204059584396}
 --- !u!1 &3994641675418531901
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,10 +160,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7822658386260777285}
-  - component: {fileID: 3113395938459056414}
-  - component: {fileID: 854611802647335898}
-  m_Layer: 7
-  m_Name: Collider
+  - component: {fileID: 1154815594895802765}
+  - component: {fileID: 5094417041791081396}
+  m_Layer: 0
+  m_Name: ExplosionTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -116,8 +184,8 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8390961116866286312}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &3113395938459056414
-BoxCollider:
+--- !u!135 &1154815594895802765
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -126,18 +194,18 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 183
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &854611802647335898
+--- !u!114 &5094417041791081396
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,11 +214,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3994641675418531901}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc15570bf67d9466ca0e1ecdf20bba03, type: 3}
+  m_Script: {fileID: 11500000, guid: d6d540beadb5644039becf1a39f55911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  References:
-  - {fileID: 4583997204059584396}
 --- !u!1 &4583997204059584396
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,10 +262,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf87dfca2beba4479860b9e5654c5e1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LifeTime: 20
+  LifeTime: 4
   ExplosionForce: 1000
   ExplosionRadius: 1
   _rigidbody: {fileID: 6305133371857202362}
+  _charactersReceiver: {fileID: 5094417041791081396}
   ExplodedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -235,6 +302,7 @@ Transform:
   m_Children:
   - {fileID: 1492432120171065815}
   - {fileID: 7822658386260777285}
+  - {fileID: 638238990691658542}
   m_Father: {fileID: 6559212523310792711}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &6305133371857202362
@@ -245,7 +313,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7722513794927150615}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 100
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}

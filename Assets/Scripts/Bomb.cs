@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using DefaultNamespace;
+using Matchbox;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.TextCore.Text;
@@ -11,11 +13,13 @@ public class Bomb : MonoBehaviour
     public float ExplosionRadius = 1f;
 
     [SerializeField] private Rigidbody _rigidbody;
+    [SerializeField] private CollisionEventReceiver _charactersReceiver;
 
     public event Action<Explosion> Exploded;
     public UnityEvent<Explosion> ExplodedEvent;
-    
+
     private float _currentLifeTime;
+    private List<CharacterController> _charactersInBlastZone = new List<CharacterController>();
 
     private CharacterController _character = null;
 
@@ -30,6 +34,31 @@ public class Bomb : MonoBehaviour
     private void Awake()
     {
         OnValidate();;
+       _charactersReceiver.triggerEnterAction += OnCharacterTriggerEnter;
+       _charactersReceiver.triggerExitAction += OnCharacterTriggerExit;
+    }
+
+    private void OnCharacterTriggerExit(Collider collider)
+    {
+        var referenceHolder = collider.GetComponent<ReferenceHolder>();
+        if (referenceHolder != null)
+        {
+            var otherCharacter = referenceHolder.GetReferenceComponent<CharacterController>();
+            if (otherCharacter != this)
+            {
+                _charactersInBlastZone.Add(otherCharacter);
+            }
+        }
+    }
+
+    private void OnCharacterTriggerEnter(Collider collider)
+    {
+        var referenceHolder = collider.GetComponent<ReferenceHolder>();
+        if (referenceHolder != null)
+        {
+            var otherCharacter = referenceHolder.GetReferenceComponent<CharacterController>();
+            _charactersInBlastZone.Remove(otherCharacter);
+        }
     }
 
     private void Start()
@@ -74,6 +103,8 @@ public class Bomb : MonoBehaviour
         {
             AudioManager.Instance.Play(AudioCommand.BombExplosion);
         }
+        
+        TakeDamage();
 
         Destroy(gameObject);
         Debug.Log("Exploded by count down!");
@@ -103,4 +134,11 @@ public class Bomb : MonoBehaviour
         }
     }
 
+    private void TakeDamage()
+    {
+        foreach (var otherCharacter in _charactersInBlastZone)
+        {
+            otherCharacter.TakeDamage(ExplosionForce);
+        }
+    }
 }
