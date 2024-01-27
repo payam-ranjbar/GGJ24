@@ -66,7 +66,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 714173429242389140}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aedfe49b589440f4eadd63a45421fcd5, type: 3}
+  m_Script: {fileID: 11500000, guid: fc15570bf67d9466ca0e1ecdf20bba03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   References:
@@ -212,6 +212,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2419371307864549179}
+  - component: {fileID: 1310049997902871773}
   - component: {fileID: 3529312000318776622}
   - component: {fileID: 6414187014097652635}
   - component: {fileID: 8140922282989108290}
@@ -238,6 +239,18 @@ Transform:
   - {fileID: 5152654036384079999}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1310049997902871773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3200062805358102804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42292f6a57d9948d4830e3c15fd821f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3529312000318776622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,7 +260,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3200062805358102804}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b077edde9f3f4f4b8cc66cfcb77922d, type: 3}
+  m_Script: {fileID: 11500000, guid: c572b1c2c7c8d48b2908b309e1fdca61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &6414187014097652635
@@ -259,19 +272,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3200062805358102804}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df60591fd25d1e540883ab054ab78c62, type: 3}
+  m_Script: {fileID: 11500000, guid: a417e75346458454387cf8d5f463f5be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 10
-  _maxHealth: 1
-  _rotationSpeed: 500
-  _slapCooldown: 0.3
-  _slapDuration: 0.5
-  _slapSpeed: 80
-  _rootIdentifier: {fileID: 3529312000318776622}
-  _rigidbody: {fileID: 4100933173266524458}
-  _slapEventReceiver: {fileID: 2670699082787874532}
-  movementDirection: {x: 0, y: 0}
+  _rootIdentifier: {fileID: 1310049997902871773}
+  _characterController: {fileID: 8140922282989108290}
 --- !u!114 &8140922282989108290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,11 +286,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 3200062805358102804}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18f25c00a089f7438af629095d1ca78, type: 3}
+  m_Script: {fileID: 11500000, guid: 9e7efaff7693e45a69463d14bdbc5ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rootIdentifier: {fileID: 3529312000318776622}
-  _characterController: {fileID: 6414187014097652635}
+  _speed: 10
+  _maxHealth: 1
+  _rotationSpeed: 500
+  _slapCooldown: 1
+  _slapDuration: 0.3
+  _slapSpeed: 80
+  _rootIdentifier: {fileID: 1310049997902871773}
+  _rigidbody: {fileID: 4100933173266524458}
+  _slapEventReceiver: {fileID: 4603919471776829835}
+  movementDirection: {x: 0, y: 0}
 --- !u!1 &3660139557279663404
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,7 +371,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1285811137359353511}
   - component: {fileID: 6710181511812031578}
-  - component: {fileID: 2670699082787874532}
+  - component: {fileID: 4603919471776829835}
   m_Layer: 6
   m_Name: slapTrigger
   m_TagString: Untagged
@@ -402,7 +415,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.75, y: 0.75, z: 0.75}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2670699082787874532
+--- !u!114 &4603919471776829835
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -411,7 +424,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5355010055238360272}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa69bcece6bff654ab34e3853ff4a4f6, type: 3}
+  m_Script: {fileID: 11500000, guid: d6d540beadb5644039becf1a39f55911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7690238777281981081
