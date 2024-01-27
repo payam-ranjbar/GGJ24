@@ -1,0 +1,100 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Shader Graphs_Character shader 2
+  m_Shader: {fileID: -6465566751694194690, guid: 08c9aba8d4185d94fba9f8f89d4d07e2,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap:
+    RenderType: Opaque
+  disabledShaderPasses:
+  - SHADOWCASTER
+  m_LockedProperties: _ReceiveShadows
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _Normal:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - Boolean_16648d20c9c742bdb3a377aff358e586: 0
+    - Boolean_ca33494db7ff4931a42b2fac825c7f48: 1
+    - Boolean_e02f9f8813384655bc1be51288550a5d: 0
+    - Vector1_1234de4d5d5a45b3b8f6db43bdb36875: -6.8
+    - Vector1_18cda4b12d44472391acdb0c990cd9a7: -10.89
+    - Vector1_2a6e54ced49f440b98ce88adfa96f494: -4.1
+    - Vector1_5a2a0cf208bc4b7882872c32b8fad2b3: 5.26
+    - Vector1_7e2ac357bb1f4975849ce34130812b5b: -43.44
+    - Vector1_8c0866e4940d4362a8fd58bbd2a57baa: -11.5
+    - Vector1_91c2e26715b6414ab7ee0a157fc78ee2: 4
+    - Vector1_c5a62c1cab52401690923f6f95772fca: 1.52
+    - Vector1_f383b9c74cf441a08f08428a9e6bb553: -30.5
+    - _Alpha: 1
+    - _AlphaClip: 0
+    - _AlphaToMask: 0
+    - _Ambient_Occlusion: 1.01
+    - _Blend: 0
+    - _BlendModePreserveSpecular: 1
+    - _CastShadows: 0
+    - _Cull: 2
+    - _DstBlend: 0
+    - _Metalic: 0
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _ReceiveShadows: 1
+    - _Smoothness: 0.42
+    - _SrcBlend: 1
+    - _Surface: 0
+    - _WorkflowMode: 1
+    - _ZTest: 4
+    - _ZWrite: 1
+    - _ZWriteControl: 0
+    m_Colors:
+    - Color_3a2946387d984903877d0bf30cf2c9de: {r: 1, g: 1, b: 1, a: 1}
+    - Color_4dc5c4af58d0486c9ee6545dd57dc65b: {r: 0, g: 0, b: 0, a: 1}
+    - Vector2_569e8dd0e7934cc19e2cd98d0ff859fa: {r: 19.3, g: 20, b: 0, a: 0}
+    - Vector2_f6939e88858d431995ae939250360a98: {r: 1.23, g: 0.32, b: 0, a: 0}
+    - _Emission: {r: 10.556064, g: 10.556064, b: 10.556064, a: 0.09803922}
+    - _Tiling_1: {r: 11, g: 11, b: 0, a: 0}
+    - _offset: {r: 4.8, g: 1.46, b: 0, a: 0}
+  m_BuildTextureStacks: []
+--- !u!114 &543415172852165160
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7
