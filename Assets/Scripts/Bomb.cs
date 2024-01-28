@@ -14,6 +14,7 @@ public class Bomb : MonoBehaviour
 
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private CollisionEventReceiver _charactersReceiver;
+    [SerializeField] private Collider _collider;
 
     public event Action<Explosion> Exploded;
     public UnityEvent<Explosion> ExplodedEvent;
@@ -23,6 +24,8 @@ public class Bomb : MonoBehaviour
 
     private CharacterController _character = null;
     public new Transform transform => _rigidbody.transform;
+
+    public bool IsAttachedOnce = false;
 
     private void Awake()
     {
@@ -80,6 +83,11 @@ public class Bomb : MonoBehaviour
         {
             _rigidbody.velocity -= Vector3.up * _gravity * deltaTime * _rigidbody.mass;
         }
+
+        if (_rigidbody.position.y < -2.0f)
+        {
+            Explode();
+        }
     }
 
     private void Countdown()
@@ -122,6 +130,10 @@ public class Bomb : MonoBehaviour
         {
             Detach();
         }
+
+        //_collider.enabled = false;
+
+        IsAttachedOnce = true;
         _character = character;
     }
 
@@ -133,6 +145,7 @@ public class Bomb : MonoBehaviour
 
     private void Detach()
     {
+        //_collider.enabled = true;
         if (_character != null)
         {
             _character.BombDetached(this);

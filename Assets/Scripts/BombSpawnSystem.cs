@@ -19,6 +19,8 @@ public class BombSpawnSystem : MonoBehaviour
     public List<ObservedSpot> freeSpots => _freeSpots;
     public List<ObservedSpot> filledSpots => _filledSpots;
 
+    public List<Bomb> bombs = new List<Bomb>();
+
     public static BombSpawnSystem instance = null;
 
 
@@ -75,6 +77,9 @@ public class BombSpawnSystem : MonoBehaviour
 
             var bomb = Instantiate(BombPrefab, new Vector3(x, y, z), Quaternion.identity);
             spot.AddBomb(bomb);
+            var component = bomb.GetComponent<Bomb>();
+            component.Exploded += (a) => { bombs.Remove(component); };
+            bombs.Add(component);
             Debug.Log("Bomb spawned at " + x + ", " + z);
         }
     }
