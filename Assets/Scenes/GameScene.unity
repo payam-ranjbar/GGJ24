@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4002476, g: 0.34465444, b: 0.5282351, a: 1}
+  m_IndirectSpecularColor: {r: 0.4001795, g: 0.34460336, b: 0.52803326, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1023,9 +1023,9 @@ RectTransform:
   - {fileID: 884998204}
   m_Father: {fileID: 1893388391}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 874, y: 465}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 824, y: 416.73}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &130301169
@@ -1629,22 +1629,22 @@ PrefabInstance:
     - target: {fileID: 7658507890088537384, guid: 398e8233a84d4d0428d770a5b07b3b2c,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.64088964
+      value: 0.64135975
       objectReference: {fileID: 0}
     - target: {fileID: 7658507890088537384, guid: 398e8233a84d4d0428d770a5b07b3b2c,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.24532478
+      value: 0.2455047
       objectReference: {fileID: 0}
     - target: {fileID: 7658507890088537384, guid: 398e8233a84d4d0428d770a5b07b3b2c,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.67930853
+      value: 0.6788648
       objectReference: {fileID: 0}
     - target: {fileID: 7658507890088537384, guid: 398e8233a84d4d0428d770a5b07b3b2c,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.26003107
+      value: -0.25986117
       objectReference: {fileID: 0}
     - target: {fileID: 7837625709827521665, guid: 398e8233a84d4d0428d770a5b07b3b2c,
         type: 3}
@@ -1855,10 +1855,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -2562,7 +2562,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.24532478, y: 0.67930853, z: -0.26003107, w: 0.64088964}
+  m_LocalRotation: {x: 0.2455047, y: 0.6788648, z: -0.25986117, w: 0.64135975}
   m_LocalPosition: {x: -10.550693, y: 11.1289015, z: 2.0384517}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
