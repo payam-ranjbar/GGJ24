@@ -361,7 +361,7 @@ MonoBehaviour:
   pushTime: 0.5
   lerpDuration: 0.2
   handTransform: {fileID: 4745994513383216378}
-  ghost: {fileID: 0}
+  ghost: {fileID: 2941710278379749255, guid: ebc70f9c1422c38409b121da43b9c3bb, type: 3}
   onSlap:
     m_PersistentCalls:
       m_Calls: []
