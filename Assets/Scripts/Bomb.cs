@@ -31,6 +31,8 @@ public class Bomb : MonoBehaviour
 
     public bool IsAttachedOnce = false;
 
+    public float TimerCountdown => _currentLifeTime;
+    
     private void Awake()
     {
         OnValidate();
