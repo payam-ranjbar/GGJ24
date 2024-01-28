@@ -354,7 +354,7 @@ MonoBehaviour:
   ExplosionForce: 1000
   ExplosionRadius: 1
   visuals: {fileID: 2482142247095798437}
-  destroyTime: 5
+  destroyTime: 3
   _gravity: 10
   _rigidbody: {fileID: 6305133371857202362}
   _charactersReceiver: {fileID: 5094417041791081396}
