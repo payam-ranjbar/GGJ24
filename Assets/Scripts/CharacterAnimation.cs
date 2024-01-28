@@ -20,7 +20,7 @@ public class CharacterAnimation : MonoBehaviour
     public float lerpDuration;
 
     public Transform handTransform;
-
+    public GameObject ghost;
     [Header("callbacks")] 
     public UnityEvent onSlap;
     public UnityEvent onPushed;
@@ -49,9 +49,13 @@ public class CharacterAnimation : MonoBehaviour
         handStartPos = handTransform.position;
         handStartRot = handTransform.rotation.eulerAngles;
         handStartScale = handTransform.localScale;
-
     }
 
+    public void Die()
+    {
+        var deadGhost = Instantiate(ghost, transform.position, Quaternion.identity);
+        // Destroy(deadGhost, 3f);
+    }
     public void Run()
     {
         if(_isRunning) return;
