@@ -266,6 +266,7 @@ public class CharacterController : MonoBehaviour
     
     private void Die()
     {
+        _characterAnimation.Die();
         _destroyed = true;
         _rootIdentifier.gameObject.SetActive(false);
         CharacterDie?.Invoke();
