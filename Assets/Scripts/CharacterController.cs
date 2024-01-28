@@ -63,8 +63,8 @@ public class CharacterController : MonoBehaviour
     
     private CharacterAnimation _characterAnimation;
 
-    public UnityEvent MainPlayerDie;
-
+    public UnityEvent CharacterDie;
+    
     private void OnValidate()
     {
         if (_rootIdentifier == null)
@@ -179,12 +179,15 @@ public class CharacterController : MonoBehaviour
         {
             _bomb.Throw((transform.forward * (1.0f - _bombThrowUpFactor) + transform.up * _bombThrowUpFactor).normalized, _bombThrowSpeed);
         }
-        else if (_slapCharacters.Count > 0)
+        else
         {
             _characterAnimation.Slap();
-            foreach (var otherCharacter in _slapCharacters)
+            if (_slapCharacters.Count > 0)
             {
-                otherCharacter.OnSlapped(new Vector2(transform.forward.x, transform.forward.z));
+                foreach (var otherCharacter in _slapCharacters)
+                {
+                    otherCharacter.OnSlapped(new Vector2(transform.forward.x, transform.forward.z));
+                }
             }
         }
     }
@@ -260,7 +263,7 @@ public class CharacterController : MonoBehaviour
     {
         _destroyed = true;
         _rootIdentifier.gameObject.SetActive(false);
-        MainPlayerDie?.Invoke();
+        CharacterDie?.Invoke();
         //Destroy(gameObject);
     }
 
