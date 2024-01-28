@@ -81,11 +81,16 @@ public class CharacterAnimation : MonoBehaviour
         animator.SetTrigger("Idle");
     }
 
-    public void Slap()
+    public void Slap(bool _isPlayer)
     {
         onSlap?.Invoke();
-        AudioManager.Instance.Play(AudioCommand.Slap);
+        if(!_isPlayer)
+            AudioManager.Instance.Play(AudioCommand.Slap);
+        else
+        {
+            AudioManager.Instance.Play(AudioCommand.SlapPlayer);
 
+        }
         facialFeatures.Angry();
         _slapped = true;
         if(_growingCoroutine == null)
@@ -95,10 +100,20 @@ public class CharacterAnimation : MonoBehaviour
         animator.SetTrigger("Slap");
     }
 
-    public void Pushed()
+    public void Pushed(bool isPlayer)
     {
         facialFeatures.Shocked();
-        AudioManager.Instance.Play(AudioCommand.Push);
+        if (isPlayer)
+        {
+            AudioManager.Instance.Play(AudioCommand.PushPlayer);
+
+        }
+        else
+        {
+            AudioManager.Instance.Play(AudioCommand.Push);
+
+            
+        }
         onPushed?.Invoke();
         _pushed = true;
         animator.SetBool("Running", false);

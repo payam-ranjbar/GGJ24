@@ -9,5 +9,7 @@ public enum AudioCommand
     Cue,
 
     Idle,
-    StartRun
+    StartRun,
+    SlapPlayer,
+    PushPlayer
 }
