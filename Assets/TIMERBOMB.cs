@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Matchbox;
 
 public class TIMERBOMB : MonoBehaviour
 {
     public Slider slider; // Reference to the slider in the Unity Editor
     public TMP_Text countdownText; // Reference to the TextMeshPro component
     public float countdownDuration = 10f; // Duration of the countdown in seconds
+    public bool ON = true;
 
-    private float currentTime;
+    public float currentTime;
 
     void Start()
     {
@@ -19,17 +21,20 @@ public class TIMERBOMB : MonoBehaviour
 
     void Update()
     {
-        // Update the countdown
-        currentTime -= Time.deltaTime;
+        if (ON == true)
+        {
+            // Update the countdown
+            currentTime -= Time.deltaTime;
 
-        // Ensure the countdown doesn't go below 0
-        currentTime = Mathf.Max(0, currentTime);
+            // Ensure the countdown doesn't go below 0
+            currentTime = Mathf.Max(0, currentTime);
 
-        // Update the slider value based on the countdown progress
-        slider.value = currentTime / countdownDuration;
+            // Update the slider value based on the countdown progress
+            slider.value = currentTime / countdownDuration;
 
-        // Update the text display
-        UpdateCountdownText();
+            // Update the text display
+            UpdateCountdownText();
+        }
     }
 
     void UpdateCountdownText()

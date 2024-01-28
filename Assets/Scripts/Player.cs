@@ -2,9 +2,9 @@
 
 namespace Matchbox
 {
-    public class PlayerBehavior : MonoBehaviour
+    public class Player : MonoBehaviour
     {
-        public static PlayerBehavior Instance { get; private set; }
+        public static Player Instance { get; private set; }
 
         private void Awake()
         {
@@ -20,7 +20,7 @@ namespace Matchbox
 
         private Bomb _caryyingBomb;
 
-
+        public TIMERBOMB BOMB;
         public float BombsTimer => _caryyingBomb.TimerCountdown;
         public float BombsMaxTime => _caryyingBomb.LifeTime;
         
@@ -29,8 +29,12 @@ namespace Matchbox
         {
             _caryyingBomb = controller.bombAttackTransform.GetComponent<Bomb>();
         }
-        
-        
-        
+
+        public void Update()
+        {
+            BOMB.currentTime = BombsTimer;
+            BOMB.countdownDuration = BombsMaxTime;
+        }
+
     }
 }
