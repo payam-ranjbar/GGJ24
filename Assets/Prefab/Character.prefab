@@ -297,7 +297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c572b1c2c7c8d48b2908b309e1fdca61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _escapeDuration: 0.5
+  _escapeDuration: 2
   _rootIdentifier: {fileID: 1310049997902871773}
   _characterController: {fileID: 8140922282989108290}
 --- !u!114 &6414187014097652635
