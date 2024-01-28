@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
+  m_IndirectSpecularColor: {r: 0.4002476, g: 0.34465444, b: 0.5282351, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1546,6 +1546,23 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 7837625709827521665, guid: 398e8233a84d4d0428d770a5b07b3b2c,
+        type: 3}
+      propertyPath: AudioClips.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7837625709827521665, guid: 398e8233a84d4d0428d770a5b07b3b2c,
+        type: 3}
+      propertyPath: AudioClips.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 899ea9d5a3ee4e64b95d58c20a481b4e,
+        type: 2}
+    - target: {fileID: 7837625709827521665, guid: 398e8233a84d4d0428d770a5b07b3b2c,
+        type: 3}
+      propertyPath: AudioClips.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0aa949a3cfe1b9b4ba6fdf21519d21a6,
+        type: 2}
     - target: {fileID: 8828612244633355433, guid: 398e8233a84d4d0428d770a5b07b3b2c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5930,6 +5947,11 @@ PrefabInstance:
     - target: {fileID: 6414187014097652635, guid: 760bf914e5cae4e0db0b000911d199ab,
         type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8140922282989108290, guid: 760bf914e5cae4e0db0b000911d199ab,
+        type: 3}
+      propertyPath: _isPlayer
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8140922282989108290, guid: 760bf914e5cae4e0db0b000911d199ab,

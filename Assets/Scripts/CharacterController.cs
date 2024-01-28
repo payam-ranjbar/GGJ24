@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using DefaultNamespace;
 using Matchbox;
 using UnityEngine;
 using UnityEngine.Events;
@@ -37,6 +38,7 @@ public class CharacterController : MonoBehaviour
     [SerializeField]
     private Transform _bombAttachTransform;
 
+    [SerializeField] private bool _isPlayer;
     public float speed => _speed;
 
     public Vector2 movementDirection = Vector2.zero;
@@ -185,7 +187,8 @@ public class CharacterController : MonoBehaviour
         {
             if (_slapCharacters.Count > 0 || isPlayer == true)
             {
-                _characterAnimation.Slap();
+                _characterAnimation.Slap(_isPlayer);
+
             }
 
             if (_slapCharacters.Count > 0)
@@ -203,7 +206,8 @@ public class CharacterController : MonoBehaviour
     {
         _slapRemainingTime = _slapDuration;
         _slapDirection = direction;
-        _characterAnimation.Pushed();
+        _characterAnimation.Pushed(_isPlayer);
+        
     }
 
     private void SlapTriggerEnter(Collider collider)
