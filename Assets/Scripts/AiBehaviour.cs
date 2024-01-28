@@ -104,7 +104,8 @@ public class AiBehaviour : MonoBehaviour
         if (_characterController.hasBomb == true)
         {
             var target = Vector3.zero;
-            target = _others[Random.Range(0, _others.Count)].position;
+            bool success = false;
+            target = FindPositionOnNavMesh(_others[Random.Range(0, _others.Count)].position, out success);
             movementDirection = (target - _characterController.position).normalized;
             movementDirection.y = 0.0f;
             if (Vector3.Dot(movementDirection, _characterController.transform.forward) > 0.9)
