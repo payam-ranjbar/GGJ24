@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Search;
 
 public class CharacterAnimation : MonoBehaviour
 {
@@ -70,9 +68,8 @@ public class CharacterAnimation : MonoBehaviour
 
     public void Idle()
     {
-        AudioManager.Instance.Play(AudioCommand.Idle);
-
         if(!_isRunning) return;
+        AudioManager.Instance.Play(AudioCommand.Idle);
         onIdle?.Invoke();
         facialFeatures.Blinking();
         _isRunning = false;
