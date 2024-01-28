@@ -4,6 +4,17 @@ namespace Matchbox
 {
     public class PlayerBehavior : MonoBehaviour
     {
+        public static PlayerBehavior Instance { get; private set; }
+
+        private void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+
+            // DontDestroyOnLoad(this);
+        }
         public CharacterController controller;
 
 
