@@ -36,7 +36,7 @@ public class PlayerBehaviour : MonoBehaviour
 
         _characterController.movementDirection = new Vector2(vertical, horizontal);
 
-        if (Input.GetButton("Jump"))
+        if (Input.GetButtonDown("Fire1"))
         {
             _characterController.Slap();
         }
