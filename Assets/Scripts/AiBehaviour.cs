@@ -117,6 +117,11 @@ public class AiBehaviour : MonoBehaviour
             }
         }
 
+        if (_characterController.hasBomb == false && _targetPlayer != null)
+        {
+            _targetPlayer = null;
+        }
+
         if (_characterController.hasBomb == true)
         {
             //Debug.Log("Has bomb");
@@ -129,7 +134,7 @@ public class AiBehaviour : MonoBehaviour
             target = FindPositionOnNavMesh(_targetPlayer.position, out success);
             movementDirection = (target - _characterController.position).normalized;
             movementDirection.y = 0.0f;
-            if (Vector3.Dot(movementDirection, _characterController.transform.forward) > 0.9)
+            if (Vector3.Dot(movementDirection, _characterController.transform.forward) > 0.95)
             {
                 _characterController.Slap(false);
                 _escapeRemainingTime = Random.Range(_escapeDuration, _escapeDuration * 2.0f);
