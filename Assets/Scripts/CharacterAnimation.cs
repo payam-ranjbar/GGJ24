@@ -53,7 +53,7 @@ public class CharacterAnimation : MonoBehaviour
 
     public void Die()
     {
-        //var deadGhost = Instantiate(ghost, transform.position, Quaternion.identity);
+        var deadGhost = Instantiate(ghost, transform.position, transform.rotation);
     }
     public void Run()
     {
