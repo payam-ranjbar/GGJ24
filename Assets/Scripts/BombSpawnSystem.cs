@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BombSpawnSystem : MonoBehaviour
 {
-    public GameObject Bomb;
+    public GameObject BombPrefab;
     public List<GameObject> SpawningPoints;
     public float Radius = 3f;
     
@@ -13,9 +13,21 @@ public class BombSpawnSystem : MonoBehaviour
     private List<ObservedSpot> _observedSpots;
     private float _lastSpawnTime;
 
+    private List<ObservedSpot> _freeSpots = new List<ObservedSpot>();
+    private List<ObservedSpot> _filledSpots = new List<ObservedSpot>();
+
+    public List<ObservedSpot> freeSpots => _freeSpots;
+    public List<ObservedSpot> filledSpots => _filledSpots;
+
+    public List<Bomb> bombs = new List<Bomb>();
+
+    public static BombSpawnSystem instance = null;
+
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        instance = this;
         // Initialize the list of observed spots
         _observedSpots = new List<ObservedSpot>(SpawningPoints.Count);
         foreach (var spawningPoint in SpawningPoints)
@@ -27,11 +39,29 @@ public class BombSpawnSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        UpdateSpots();
         _lastSpawnTime += Time.deltaTime;
         if (_lastSpawnTime >= Frequency)
         {
             TryGenerateObject();
             _lastSpawnTime = 0;
+        }
+    }
+
+    private void UpdateSpots()
+    {
+        _freeSpots.Clear();
+        _filledSpots.Clear();
+        foreach (var spot in _observedSpots)
+        {
+            if (spot.Spawned == false)
+            {
+                _freeSpots.Add(spot);
+            }
+            else
+            {
+                _filledSpots.Add(spot);
+            }
         }
     }
 
@@ -43,25 +73,29 @@ public class BombSpawnSystem : MonoBehaviour
             var center = spot.SpawnPoint.transform.position;
             var x = center.x + pointWithinRadius.x;
             var z = center.z + pointWithinRadius.y;
+            var y = center.y;
 
-            var bomb = Instantiate(Bomb, new Vector3(x, transform.position.y, z), Quaternion.identity);
+            var bomb = Instantiate(BombPrefab, new Vector3(x, y, z), Quaternion.identity);
             spot.AddBomb(bomb);
+            var component = bomb.GetComponent<Bomb>();
+            component.Exploded += (a) => { bombs.Remove(component); };
+            bombs.Add(component);
             Debug.Log("Bomb spawned at " + x + ", " + z);
         }
     }
 
     private bool TryGetAvailableSpot(out ObservedSpot spot)
     {
-        var freeSpots = _observedSpots.Where(x => x.Spawned == false).ToArray();
-
-        if (freeSpots.Length == 0)
+        if (_freeSpots.Count == 0)
         {
             spot = null;
             return false;
         }
 
-        var randomSpotIndex = Random.Range(0, freeSpots.Count());
-        spot = freeSpots[randomSpotIndex];
+        var randomSpotIndex = Random.Range(0, _freeSpots.Count());
+        spot = _freeSpots[randomSpotIndex];
         return true;
     }
+
+
 }

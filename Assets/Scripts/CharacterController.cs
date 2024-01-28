@@ -36,12 +36,17 @@ public class CharacterController : MonoBehaviour
     [SerializeField]
     private Transform _bombAttachTransform;
 
+    public float speed => _speed;
+
     public Vector2 movementDirection = Vector2.zero;
     public new Transform transform => _rigidbody.transform;
+    public Vector3 position => _rigidbody.position;
+    public Quaternion rotation => _rigidbody.rotation;
     public Rigidbody rigidbody => _rigidbody;
     public Transform bombAttackTransform => _bombAttachTransform;
 
     private List<CharacterController> _slapCharacters = new List<CharacterController>();
+    public bool canSlap => _slapCharacters.Count > 0;
 
     private float _slapRemainingTime = 0.0f;
     private Vector2 _slapDirection = Vector2.zero;
@@ -50,9 +55,11 @@ public class CharacterController : MonoBehaviour
     private Quaternion _rotation = Quaternion.identity;
 
     private Bomb _bomb = null;
-    
+    public bool hasBomb => _bomb != null;
+
     private bool _destroyed = false;
-    
+    public bool destroyed => _destroyed;
+
     private CharacterAnimation _characterAnimation;
 
     private void OnValidate()
@@ -88,7 +95,6 @@ public class CharacterController : MonoBehaviour
 
     private void Update()
     {
-
     }
 
     // Update is called once per frame
@@ -107,12 +113,17 @@ public class CharacterController : MonoBehaviour
             SetVelocity(movementDirection * _speed);
         }
         _rigidbody.rotation = _rotation;
+
+        if (_rigidbody.position.y < -2.0f)
+        {
+            TakeDamage(_maxHealth + 10.0f);
+        }
     }
 
     private void SetVelocity(Vector2 velocity)
     {
         _rigidbody.velocity = new Vector3(velocity.x, _rigidbody.velocity.y, velocity.y);
-        if (_rigidbody.velocity != Vector3.zero)
+        if (velocity.sqrMagnitude > 0.0f)
         {
             _characterAnimation.Run();
         }
@@ -165,7 +176,7 @@ public class CharacterController : MonoBehaviour
         {
             _bomb.Throw((transform.forward * (1.0f - _bombThrowUpFactor) + transform.up * _bombThrowUpFactor).normalized, _bombThrowSpeed);
         }
-        else
+        else if (_slapCharacters.Count > 0)
         {
             _characterAnimation.Slap();
             foreach (var otherCharacter in _slapCharacters)
@@ -245,7 +256,8 @@ public class CharacterController : MonoBehaviour
     private void Die()
     {
         _destroyed = true;
-        Destroy(gameObject);
+        _rootIdentifier.gameObject.SetActive(false);
+        //Destroy(gameObject);
     }
 
     private void OnDestroy()

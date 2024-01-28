@@ -7,6 +7,7 @@ public class ObservedSpot
     private GameObject Bomb { get; set; }
 
     private Bomb _currentBombComponent;
+    public Bomb bomb => _currentBombComponent;
 
     private ObservedSpot()
     {

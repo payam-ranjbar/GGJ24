@@ -351,9 +351,11 @@ MonoBehaviour:
   _gravity: 10
   _rigidbody: {fileID: 6305133371857202362}
   _charactersReceiver: {fileID: 5094417041791081396}
+  _collider: {fileID: 1793636682115996681}
   ExplodedEvent:
     m_PersistentCalls:
       m_Calls: []
+  IsAttachedOnce: 0
 --- !u!1 &4815660786535376680
 GameObject:
   m_ObjectHideFlags: 0
