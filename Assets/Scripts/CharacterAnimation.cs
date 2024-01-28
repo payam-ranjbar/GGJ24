@@ -185,7 +185,7 @@ public class CharacterAnimation : MonoBehaviour
         }
 
         // Optional: Perform any actions after the lerp is complete
-        Debug.Log("Lerp complete!");
+        //Debug.Log("Lerp complete!");
 
         _growingCoroutine = null;
         // You might want to reset the lerp values or perform other actions here

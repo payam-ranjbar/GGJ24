@@ -128,8 +128,9 @@ public class Bomb : MonoBehaviour
         TakeDamage();
 
         ExplodedEvent?.Invoke();
+        enabled = false;
         Destroy(gameObject, destroyTime);
-        Debug.Log("Exploded by count down!");
+        //Debug.Log("Exploded by count down!");
     }
 
     public void Attach(CharacterController character)

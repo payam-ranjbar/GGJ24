@@ -76,6 +76,7 @@ public class AiBehaviour : MonoBehaviour
 
         if (_characterController.canSlap == true && _characterController.hasBomb == false)
         {
+            //Debug.Log("Slapping");
             _characterController.Slap();
         }
 
@@ -84,6 +85,7 @@ public class AiBehaviour : MonoBehaviour
         var playerPosition = FindPositionOnNavMesh(_characterController.position, out var success2);
         if (success2 == false)
         {
+            //Debug.Log("Failed to find player position");
             return;
         }
 
@@ -108,6 +110,7 @@ public class AiBehaviour : MonoBehaviour
 
             if (leastDistance < 4.0f && closestBomb != null)
             {
+                //Debug.Log("Escaping bomb");
                 movementDirection = -CalculateMovementDirection(playerPosition, closestBomb.transform.position, out var success);
                 _characterController.movementDirection = new Vector2(movementDirection.x, movementDirection.z);
                 return;
@@ -117,7 +120,7 @@ public class AiBehaviour : MonoBehaviour
         if (_escapeRemainingTime > 0.0f && _targetBomb == null)
         {
             _escapeRemainingTime -= deltaTime;
-
+            //Debug.Log("Moving to a free spot");
             var freeSpots = BombSpawnSystem.instance.freeSpots;
             if (freeSpots.Count > 0)
             {
@@ -137,6 +140,7 @@ public class AiBehaviour : MonoBehaviour
         }
         else if (_characterController.hasBomb == true)
         {
+            //Debug.Log("Has bomb");
             if (_targetPlayer == null || _targetPlayer.destroyed == true)
             {
                 _targetPlayer = _others[Random.Range(0, _others.Count)];
@@ -157,6 +161,7 @@ public class AiBehaviour : MonoBehaviour
         {
             if (_targetBomb == null)
             {
+                //Debug.Log("Choosing new bomb");
                 if (bombs.Count > 0)
                 {
                     var bomb = bombs[Random.Range(0, bombs.Count)];
@@ -170,6 +175,7 @@ public class AiBehaviour : MonoBehaviour
 
             if (_targetBomb != null)
             {
+                //Debug.Log("Going to bomb");
                 movementDirection = CalculateMovementDirection(
                     playerPosition, 
                     _targetBomb.transform.position,
@@ -182,11 +188,13 @@ public class AiBehaviour : MonoBehaviour
                 }
             }
         }
+        //Debug.Log("Movement direction:" + movementDirection);
         _characterController.movementDirection = new Vector2(movementDirection.x, movementDirection.z);
     }
 
     private void OnBombExploded(Explosion explosion)
     {
+        //Debug.Log("OnBomb exploded");
         _targetBomb = null;
     }
 
