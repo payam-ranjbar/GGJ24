@@ -1,4 +1,13 @@
 public enum AudioCommand
 {
-    BombExplosion = 0
+    BombExplosion = 0,
+    Slap, 
+    Shock,
+    Hit, 
+    Push, 
+    Toss,
+    Cue,
+
+    Idle,
+    StartRun
 }

@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
+using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Search;
 
 public class CharacterAnimation : MonoBehaviour
 {
@@ -57,6 +56,10 @@ public class CharacterAnimation : MonoBehaviour
     {
         if(_isRunning) return;
         facialFeatures.Blinking();
+        if (ProbablityExtentions.Luck(.5f))
+        {
+            AudioManager.Instance.Play(AudioCommand.StartRun);
+        }
         _isRunning = true;
         animator.SetBool("Running", _isRunning);
 
@@ -66,6 +69,7 @@ public class CharacterAnimation : MonoBehaviour
     public void Idle()
     {
         if(!_isRunning) return;
+        AudioManager.Instance.Play(AudioCommand.Idle);
         onIdle?.Invoke();
         facialFeatures.Blinking();
         _isRunning = false;
@@ -77,6 +81,8 @@ public class CharacterAnimation : MonoBehaviour
     public void Slap()
     {
         onSlap?.Invoke();
+        AudioManager.Instance.Play(AudioCommand.Slap);
+
         facialFeatures.Angry();
         _slapped = true;
         if(_growingCoroutine == null)
@@ -89,7 +95,7 @@ public class CharacterAnimation : MonoBehaviour
     public void Pushed()
     {
         facialFeatures.Shocked();
-
+        AudioManager.Instance.Play(AudioCommand.Push);
         onPushed?.Invoke();
         _pushed = true;
         animator.SetBool("Running", false);

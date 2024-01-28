@@ -362,11 +362,110 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 18548663}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 --- !u!4 &81038188 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4745994513383216378, guid: 760bf914e5cae4e0db0b000911d199ab,
     type: 3}
   m_PrefabInstance: {fileID: 1509772035}
+=======
+--- !u!1001 &201282773
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5608160891651995068, guid: 398e8233a84d4d0428d770a5b07b3b2c,
+        type: 3}
+      propertyPath: m_Name
+      value: Game Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7837625709827521665, guid: 398e8233a84d4d0428d770a5b07b3b2c,
+        type: 3}
+      propertyPath: BackGroundMusic
+      value: 
+      objectReference: {fileID: 201282774}
+    - target: {fileID: 7837625709827521665, guid: 398e8233a84d4d0428d770a5b07b3b2c,
+        type: 3}
+      propertyPath: AudioClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1a898805f7acf4831be656bce31ce9e4,
+        type: 2}
+    - target: {fileID: 7837625709827521665, guid: 398e8233a84d4d0428d770a5b07b3b2c,
+        type: 3}
+      propertyPath: AudioClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: b45860187ea9fe546b37f41773f82b2e,
+        type: 2}
+    - target: {fileID: 7837625709827521665, guid: 398e8233a84d4d0428d770a5b07b3b2c,
+        type: 3}
+      propertyPath: AudioClips.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6869adbc9a0e29444a5f74024f8e0cd9,
+        type: 2}
+    - target: {fileID: 8828612244633355433, guid: 398e8233a84d4d0428d770a5b07b3b2c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.2493074
+      objectReference: {fileID: 0}
+    - target: {fileID: 8828612244633355433, guid: 398e8233a84d4d0428d770a5b07b3b2c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.36890084
+      objectReference: {fileID: 0}
+    - target: {fileID: 8828612244633355433, guid: 398e8233a84d4d0428d770a5b07b3b2c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.20845163
+      objectReference: {fileID: 0}
+    - target: {fileID: 8828612244633355433, guid: 398e8233a84d4d0428d770a5b07b3b2c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8828612244633355433, guid: 398e8233a84d4d0428d770a5b07b3b2c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8828612244633355433, guid: 398e8233a84d4d0428d770a5b07b3b2c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8828612244633355433, guid: 398e8233a84d4d0428d770a5b07b3b2c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8828612244633355433, guid: 398e8233a84d4d0428d770a5b07b3b2c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8828612244633355433, guid: 398e8233a84d4d0428d770a5b07b3b2c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8828612244633355433, guid: 398e8233a84d4d0428d770a5b07b3b2c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 398e8233a84d4d0428d770a5b07b3b2c, type: 3}
+--- !u!82 &201282774 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2523441850438175198, guid: 398e8233a84d4d0428d770a5b07b3b2c,
+    type: 3}
+  m_PrefabInstance: {fileID: 201282773}
+>>>>>>> 9b71ecf061a4280697852d80de0d83cfac6755dc
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &208228393
 PrefabInstance:
@@ -2457,6 +2556,7 @@ SceneRoots:
   - {fileID: 2036404360}
   - {fileID: 1219385009}
   - {fileID: 284239718}
+<<<<<<< HEAD
   - {fileID: 1663536354}
   - {fileID: 1040387781}
   - {fileID: 13466571}
@@ -2465,3 +2565,6 @@ SceneRoots:
   - {fileID: 1509772035}
   - {fileID: 1090807114}
   - {fileID: 268763414}
+=======
+  - {fileID: 201282773}
+>>>>>>> 9b71ecf061a4280697852d80de0d83cfac6755dc
