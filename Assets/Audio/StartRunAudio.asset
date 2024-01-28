@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2297691f439447f48789741dd9d42186, type: 3}
-  m_Name: BombExplosionAudio
+  m_Name: StartRunAudio
   m_EditorClassIdentifier: 
-  AudioCommand: 0
+  AudioCommand: 8
   Volume: 0.81
-  AudioClip: {fileID: 8300000, guid: 90aea066458f7bf4290e97c876459e89, type: 3}
+  AudioClip: {fileID: 8300000, guid: 061d146da4d2f8247b4f448d4bde2ec7, type: 3}
