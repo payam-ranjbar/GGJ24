@@ -151,33 +151,33 @@ public class CameraManager : MonoBehaviour
         witnessCam3.Priority = 0;
         mainCam.Priority = 0;
     }
-    private void OnGUI()
-    {
-        // Set up GUI layout
+    // private void OnGUI()
+    // {
+    //     // Set up GUI layout
         
-        if (GUI.Button(new Rect(10, 140, 80, 30), "Hit effect"))
-        {
-            HitEffect();
-        }
+    //     if (GUI.Button(new Rect(10, 140, 80, 30), "Hit effect"))
+    //     {
+    //         HitEffect();
+    //     }
         
-        if (GUI.Button(new Rect(10, 180, 80, 30), "Witness 1"))
-        {   
-            ActivateWitness1();
-        }
+    //     if (GUI.Button(new Rect(10, 180, 80, 30), "Witness 1"))
+    //     {   
+    //         ActivateWitness1();
+    //     }
         
-        if (GUI.Button(new Rect(10, 220, 80, 30), "Witness 2"))
-        {
-            ActivateWitness2();
-        }        
-        if (GUI.Button(new Rect(90, 180, 80, 30), "Main Cam"))
-        {
-            ActivateMainCamera();
-        }     
-        if (GUI.Button(new Rect(90, 220, 80, 30), "Impulse"))
-        {
-            ScreenShake();
-        }
+    //     if (GUI.Button(new Rect(10, 220, 80, 30), "Witness 2"))
+    //     {
+    //         ActivateWitness2();
+    //     }        
+    //     if (GUI.Button(new Rect(90, 180, 80, 30), "Main Cam"))
+    //     {
+    //         ActivateMainCamera();
+    //     }     
+    //     if (GUI.Button(new Rect(90, 220, 80, 30), "Impulse"))
+    //     {
+    //         ScreenShake();
+    //     }
 
-    }
+    // }
 
 }

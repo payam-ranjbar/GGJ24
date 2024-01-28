@@ -192,40 +192,40 @@ public class CharacterAnimation : MonoBehaviour
     }
     #region Debuging
 
-    private void OnGUI()
-    {
-        // Set up GUI layout
-        GUI.BeginGroup(new Rect(10, 10, 200, 140));
+    //private void OnGUI()
+    //{
+    //    // Set up GUI layout
+    //    GUI.BeginGroup(new Rect(10, 10, 200, 140));
         
-        // Run button
-        if (GUI.Button(new Rect(10, 10, 80, 30), "Run"))
-        {
-            Run();
-        }
+    //    // Run button
+    //    if (GUI.Button(new Rect(10, 10, 80, 30), "Run"))
+    //    {
+    //        Run();
+    //    }
 
-        // Idle button
-        if (GUI.Button(new Rect(100, 10, 80, 30), "Idle"))
-        {
-            Idle();
-        }
+    //    // Idle button
+    //    if (GUI.Button(new Rect(100, 10, 80, 30), "Idle"))
+    //    {
+    //        Idle();
+    //    }
 
-        // Slap button
-        if (GUI.Button(new Rect(10, 50, 80, 30), "Slap"))
-        {
-            Slap();
-        }      
-        if (GUI.Button(new Rect(100, 50, 80, 30), "Pick"))
-        {
-            _picking = !_picking;
+    //    // Slap button
+    //    if (GUI.Button(new Rect(10, 50, 80, 30), "Slap"))
+    //    {
+    //        Slap();
+    //    }      
+    //    if (GUI.Button(new Rect(100, 50, 80, 30), "Pick"))
+    //    {
+    //        _picking = !_picking;
 
-        }        
-        if (GUI.Button(new Rect(10, 90, 80, 30), "Pushed"))
-        {
-            Pushed();
-        }
+    //    }        
+    //    if (GUI.Button(new Rect(10, 90, 80, 30), "Pushed"))
+    //    {
+    //        Pushed();
+    //    }
 
-        GUI.EndGroup();
-    }
+    //    GUI.EndGroup();
+    //}
 
   
 
