@@ -1,13 +1,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class StartScreenSceneManager : MonoBehaviour
 {
     public GameObject StartWindow;
     public GameObject TutorialWindow;
-    
-    private const string START_SCENE = "Start";
-    private const string GAME_SCENE = "GameScene";
     
     private void Awake()
     {
@@ -25,17 +22,17 @@ public class GameManager : MonoBehaviour
     {
         TutorialWindow.SetActive(false);
         StartWindow.SetActive(true);
-        SceneManager.LoadScene(START_SCENE);
-        var scene = SceneManager.GetSceneByName(GAME_SCENE);
+        SceneManager.LoadScene(SceneNames.START_SCENE);
+        var scene = SceneManager.GetSceneByName(SceneNames.GAME_SCENE);
         if (scene.isLoaded)
         {
-            SceneManager.UnloadSceneAsync(GAME_SCENE);
+            SceneManager.UnloadSceneAsync(SceneNames.GAME_SCENE);
         }
     }
 
     public void GotoMainGame()
     {
-        SceneManager.LoadScene(GAME_SCENE);
-        SceneManager.UnloadSceneAsync(START_SCENE);
+        SceneManager.LoadScene(SceneNames.GAME_SCENE);
+        SceneManager.UnloadSceneAsync(SceneNames.START_SCENE);
     }
 }
