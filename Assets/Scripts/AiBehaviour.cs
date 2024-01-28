@@ -6,7 +6,7 @@ public class AiBehaviour : MonoBehaviour
 {
     [Header("Gameplay")]
     [SerializeField]
-    private float _escapeDuration = 3.0f;
+    private float _escapeDuration = 1.0f;
     [Header("References")]
     [SerializeField]
     private RootIdentifier _rootIdentifier;
@@ -106,7 +106,7 @@ public class AiBehaviour : MonoBehaviour
                 }
             }
 
-            if (leastDistance < 5.0f && closestBomb != null)
+            if (leastDistance < 4.0f && closestBomb != null)
             {
                 movementDirection = -CalculateMovementDirection(playerPosition, closestBomb.transform.position, out var success);
                 _characterController.movementDirection = new Vector2(movementDirection.x, movementDirection.z);
