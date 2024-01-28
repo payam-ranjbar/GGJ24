@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Matchbox;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(CharacterAnimation))]
 public class CharacterController : MonoBehaviour
@@ -59,8 +60,10 @@ public class CharacterController : MonoBehaviour
 
     private bool _destroyed = false;
     public bool destroyed => _destroyed;
-
+    
     private CharacterAnimation _characterAnimation;
+
+    public UnityEvent MainPlayerDie;
 
     private void OnValidate()
     {
@@ -257,6 +260,7 @@ public class CharacterController : MonoBehaviour
     {
         _destroyed = true;
         _rootIdentifier.gameObject.SetActive(false);
+        MainPlayerDie?.Invoke();
         //Destroy(gameObject);
     }
 
