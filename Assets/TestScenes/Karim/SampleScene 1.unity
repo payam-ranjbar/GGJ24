@@ -4844,7 +4844,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05e559a2d02264ac2b3424b33d61cb16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bomb: {fileID: 4583997204059584396, guid: 826cec27710c90e4eb6491d755f632f1, type: 3}
+  BombPrefab: {fileID: 0}
   SpawningPoints:
   - {fileID: 18548665}
   - {fileID: 256729572}
@@ -4852,6 +4852,7 @@ MonoBehaviour:
   - {fileID: 612546464}
   Radius: 0
   Frequency: 2
+  bombs: []
 --- !u!4 &2036404360
 Transform:
   m_ObjectHideFlags: 0
