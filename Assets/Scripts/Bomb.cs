@@ -101,7 +101,12 @@ public class Bomb : MonoBehaviour
 
     private void Countdown()
     {
-        _currentLifeTime += Time.deltaTime;
+        var modifier = 1.0f;
+        if (IsAttachedOnce == true)
+        {
+            modifier = 2.0f;
+        }
+        _currentLifeTime += Time.deltaTime * modifier;
         if (_currentLifeTime >= LifeTime)
         {
             ExplodeInternal();

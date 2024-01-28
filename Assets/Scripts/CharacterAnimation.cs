@@ -51,9 +51,9 @@ public class CharacterAnimation : MonoBehaviour
         handStartScale = handTransform.localScale;
     }
 
-    public void Die()
+    public void Die(Vector3 position, Quaternion rotation)
     {
-        //var deadGhost = Instantiate(ghost, transform.position, Quaternion.identity);
+        var deadGhost = Instantiate(ghost, position, rotation);
     }
     public void Run()
     {
