@@ -19,6 +19,7 @@ public class AiBehaviour : MonoBehaviour
     NavMeshPath _path = null;
     private float _escapeRemainingTime = 0.0f;
     private List<CharacterController> _others = new List<CharacterController>();
+    private float _throwCooldown = 0.0f;
 
     private void OnValidate()
     {
@@ -127,6 +128,7 @@ public class AiBehaviour : MonoBehaviour
             //Debug.Log("Has bomb");
             if (_targetPlayer == null || _targetPlayer.destroyed == true)
             {
+                _throwCooldown = Random.Range(0.1f, 2.0f);
                 _targetPlayer = _others[Random.Range(0, _others.Count)];
             }
             var target = Vector3.zero;
@@ -134,7 +136,8 @@ public class AiBehaviour : MonoBehaviour
             target = FindPositionOnNavMesh(_targetPlayer.position, out success);
             movementDirection = (target - _characterController.position).normalized;
             movementDirection.y = 0.0f;
-            if (Vector3.Dot(movementDirection, _characterController.transform.forward) > 0.95)
+            _throwCooldown -= Time.deltaTime;
+            if (Vector3.Dot(movementDirection, _characterController.transform.forward) > 0.90 && _throwCooldown <= 0.0f)
             {
                 _characterController.Slap(false);
                 _escapeRemainingTime = Random.Range(_escapeDuration, _escapeDuration * 2.0f);

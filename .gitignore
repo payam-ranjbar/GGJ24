@@ -75,3 +75,8 @@ crashlytics-build.properties
 /SwitchIL2CPPCache/
 *.DS_Store
 **/.idea
+
+GoofsGalore/*
+GoofsGalore
+
+GoofsGalore.zip
