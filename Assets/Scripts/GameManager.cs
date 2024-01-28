@@ -3,33 +3,39 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject StartWindow;
+    public GameObject TutorialWindow;
+    
     private const string START_SCENE = "Start";
     private const string GAME_SCENE = "GameScene";
+    
     private void Awake()
     {
-        DontDestroyOnLoad(this);
+        TutorialWindow.SetActive(false);
+        StartWindow.SetActive(true);
     }
 
-    public void SetState(GameState state)
+    public void GoToTutorialScreen()
     {
-        switch (state)
+        TutorialWindow.SetActive(true);
+        StartWindow.SetActive(false);
+    }
+
+    public void GoToStartScreen()
+    {
+        TutorialWindow.SetActive(false);
+        StartWindow.SetActive(true);
+        SceneManager.LoadScene(START_SCENE);
+        var scene = SceneManager.GetSceneByName(GAME_SCENE);
+        if (scene.isLoaded)
         {
-            case GameState.StartScreen:
-                SceneManager.LoadScene(START_SCENE);
-                //if(Sce)
-                SceneManager.UnloadSceneAsync(GAME_SCENE);
-                break;
-            
+            SceneManager.UnloadSceneAsync(GAME_SCENE);
         }
     }
-}
 
-public enum GameState
-{
-    StartScreen,
-    TutorialScreen,
-    Pause,
-    Win,
-    Lose,
-    StartGame
+    public void GotoMainGame()
+    {
+        SceneManager.LoadScene(GAME_SCENE);
+        SceneManager.UnloadSceneAsync(START_SCENE);
+    }
 }

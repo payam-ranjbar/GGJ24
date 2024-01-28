@@ -853,7 +853,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 640508502}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 714201221}
+        m_TargetAssemblyTypeName: GameManager2, Assembly-CSharp
+        m_MethodName: GoToTutorialScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &640508502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -941,7 +953,7 @@ GameObject:
   - component: {fileID: 714201220}
   - component: {fileID: 714201221}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: SceneManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -974,6 +986,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1e36717dee04c648038b50c67eefeb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StartWindow: {fileID: 680404149}
+  TutorialWindow: {fileID: 271198685}
 --- !u!1 &877293151
 GameObject:
   m_ObjectHideFlags: 0
@@ -1343,7 +1357,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1907127372}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 714201221}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: GotoMainGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1907127372
 MonoBehaviour:
   m_ObjectHideFlags: 0
