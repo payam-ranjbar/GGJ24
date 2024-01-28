@@ -340,6 +340,9 @@ MonoBehaviour:
   _bombPickupEventReceiver: {fileID: 1240975940526495746}
   _bombAttachTransform: {fileID: 6979625725632973396}
   movementDirection: {x: 0, y: 0}
+  MainPlayerDie:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2180749166518579565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -706,6 +709,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StickMan
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830295829419108010, guid: cd30a7f34ccb1544a8b7de90f50a3eb0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8976653428408807162, guid: cd30a7f34ccb1544a8b7de90f50a3eb0,
         type: 3}
