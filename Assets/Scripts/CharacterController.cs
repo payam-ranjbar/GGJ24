@@ -98,6 +98,8 @@ public class CharacterController : MonoBehaviour
 
     private void Update()
     {
+        _characterAnimation.IsPicking = _bomb != null;
+
     }
 
     // Update is called once per frame
@@ -246,6 +248,7 @@ public class CharacterController : MonoBehaviour
         if (_bomb == bomb)
         {
             _bomb = null;
+
         }
     }
 

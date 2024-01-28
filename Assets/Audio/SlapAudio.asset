@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SlapAudio
   m_EditorClassIdentifier: 
   AudioCommand: 1
-  Volume: 0.81
+  Volume: 0.107
   AudioClip: {fileID: 8300000, guid: 367bf223d6dfcb94f89727c323d3dfb1, type: 3}
