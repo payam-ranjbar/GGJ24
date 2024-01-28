@@ -77,7 +77,7 @@ public class AiBehaviour : MonoBehaviour
         if (_characterController.canSlap == true && _characterController.hasBomb == false)
         {
             //Debug.Log("Slapping");
-            _characterController.Slap();
+            _characterController.Slap(false);
         }
 
         var bombs = BombSpawnSystem.instance.bombs;
@@ -117,28 +117,7 @@ public class AiBehaviour : MonoBehaviour
             }
         }
 
-        if (_escapeRemainingTime > 0.0f && _targetBomb == null)
-        {
-            _escapeRemainingTime -= deltaTime;
-            //Debug.Log("Moving to a free spot");
-            var freeSpots = BombSpawnSystem.instance.freeSpots;
-            if (freeSpots.Count > 0)
-            {
-                if (_freeSpot == null || (playerPosition - _freeSpot.position).sqrMagnitude < 10.0f)
-                {
-                    _freeSpot = freeSpots[Random.Range(0, freeSpots.Count)].SpawnPoint.transform;
-                    return;
-                }
-                movementDirection = CalculateMovementDirection(playerPosition, _freeSpot.position, out var success);
-            }
-            if (_escapeRemainingTime <= 0.0f)
-            {
-                _escapeRemainingTime = 0.0f;
-                _targetBomb = null;
-                _freeSpot = null;
-            }
-        }
-        else if (_characterController.hasBomb == true)
+        if (_characterController.hasBomb == true)
         {
             //Debug.Log("Has bomb");
             if (_targetPlayer == null || _targetPlayer.destroyed == true)
@@ -152,9 +131,30 @@ public class AiBehaviour : MonoBehaviour
             movementDirection.y = 0.0f;
             if (Vector3.Dot(movementDirection, _characterController.transform.forward) > 0.9)
             {
-                _characterController.Slap();
+                _characterController.Slap(false);
                 _escapeRemainingTime = Random.Range(_escapeDuration, _escapeDuration * 2.0f);
                 _targetPlayer = null;
+            }
+        }
+        else if (_escapeRemainingTime > 0.0f && _targetBomb == null)
+        {
+            _escapeRemainingTime -= deltaTime;
+            //Debug.Log("Moving to a free spot");
+            var freeSpots = BombSpawnSystem.instance.freeSpots;
+            if (freeSpots.Count > 0)
+            {
+                if (_freeSpot == null || (playerPosition - _freeSpot.position).sqrMagnitude < 4.0f)
+                {
+                    _freeSpot = freeSpots[Random.Range(0, freeSpots.Count)].SpawnPoint.transform;
+                    return;
+                }
+                movementDirection = CalculateMovementDirection(playerPosition, _freeSpot.position, out var success);
+            }
+            if (_escapeRemainingTime <= 0.0f)
+            {
+                _escapeRemainingTime = 0.0f;
+                _targetBomb = null;
+                _freeSpot = null;
             }
         }
         else

@@ -167,7 +167,7 @@ public class CharacterController : MonoBehaviour
         _rigidbody.interpolation = interpolation;
     }
 
-    public void Slap()
+    public void Slap(bool isPlayer)
     {
         var now = Time.time;
         if (now < _slapCooldownEndTime)
@@ -181,13 +181,18 @@ public class CharacterController : MonoBehaviour
         }
         else
         {
-            _characterAnimation.Slap();
+            if (_slapCharacters.Count > 0 || isPlayer == true)
+            {
+                _characterAnimation.Slap();
+            }
+
             if (_slapCharacters.Count > 0)
             {
                 foreach (var otherCharacter in _slapCharacters)
                 {
                     otherCharacter.OnSlapped(new Vector2(transform.forward.x, transform.forward.z));
                 }
+                _slapCharacters.Clear();
             }
         }
     }

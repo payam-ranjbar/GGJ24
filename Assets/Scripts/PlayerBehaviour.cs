@@ -38,7 +38,7 @@ public class PlayerBehaviour : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Jump"))
         {
-            _characterController.Slap();
+            _characterController.Slap(true);
         }
     }
 }
