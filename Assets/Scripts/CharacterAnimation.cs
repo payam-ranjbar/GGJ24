@@ -107,6 +107,13 @@ public class CharacterAnimation : MonoBehaviour
         {
             AudioManager.Instance.Play(AudioCommand.PushPlayer);
 
+            if(ProbablityExtentions.Luck(.4f))
+             CameraManager.Instance.HitEffect();
+            
+            if(ProbablityExtentions.Luck(.1f))
+                CameraManager.Instance.ScreenShake();
+
+
         }
         else
         {

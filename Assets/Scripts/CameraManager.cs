@@ -88,7 +88,7 @@ public class CameraManager : MonoBehaviour
 
     public void ScreenShake()
     {
-        impulse.GenerateImpulse(0.2f);
+        impulse.GenerateImpulse(0.1f);
     }
     
     

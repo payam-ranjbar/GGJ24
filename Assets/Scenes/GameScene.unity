@@ -1541,6 +1541,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2275152083369682108, guid: 398e8233a84d4d0428d770a5b07b3b2c,
+        type: 3}
+      propertyPath: impulse
+      value: 
+      objectReference: {fileID: 1678135796}
+    - target: {fileID: 2275152083369682108, guid: 398e8233a84d4d0428d770a5b07b3b2c,
+        type: 3}
+      propertyPath: zoomCooldown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2275152083369682108, guid: 398e8233a84d4d0428d770a5b07b3b2c,
+        type: 3}
+      propertyPath: zoomInDuration
+      value: 0.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 2275152083369682108, guid: 398e8233a84d4d0428d770a5b07b3b2c,
+        type: 3}
+      propertyPath: zoomOutDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5608160891651995068, guid: 398e8233a84d4d0428d770a5b07b3b2c,
         type: 3}
       propertyPath: m_Name
@@ -7977,6 +7997,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1656283362}
   m_CullTransparentMesh: 0
+--- !u!114 &1678135796 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9145658195103789032, guid: 398e8233a84d4d0428d770a5b07b3b2c,
+    type: 3}
+  m_PrefabInstance: {fileID: 201282773}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1712674846
 GameObject:
   m_ObjectHideFlags: 0
