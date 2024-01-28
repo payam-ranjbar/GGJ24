@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class BombSpawnSystem : MonoBehaviour
 {
-    public GameObject BombPrefab;
+    public GameObject[] BombPrefabs;
     public List<GameObject> SpawningPoints;
     public float Radius = 3f;
     
     public int Frequency = 2;
 
+    public Vector3 offset;
     private List<ObservedSpot> _observedSpots;
     private float _lastSpawnTime;
 
@@ -65,16 +66,19 @@ public class BombSpawnSystem : MonoBehaviour
         }
     }
 
+    private Vector3 _spawnCenter;
     private void TryGenerateObject()
     {
         var pointWithinRadius = Random.insideUnitCircle * Radius;
         if (TryGetAvailableSpot(out var spot))
         {
             var center = spot.SpawnPoint.transform.position;
+            center += offset;
             var x = center.x + pointWithinRadius.x;
             var z = center.z + pointWithinRadius.y;
             var y = center.y;
 
+            var BombPrefab = ProbablityExtentions.SelectRandomlyFrom(BombPrefabs);
             var bomb = Instantiate(BombPrefab, new Vector3(x, y, z), Quaternion.identity);
             spot.AddBomb(bomb);
             var component = bomb.GetComponent<Bomb>();
@@ -97,5 +101,14 @@ public class BombSpawnSystem : MonoBehaviour
         return true;
     }
 
+    private void OnDrawGizmos()
+    {
+        foreach (var spawningPoint in SpawningPoints)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(spawningPoint.transform.position, 0.3f);
+        }
+
+    }
 
 }
