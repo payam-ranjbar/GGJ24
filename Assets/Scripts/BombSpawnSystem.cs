@@ -84,7 +84,7 @@ public class BombSpawnSystem : MonoBehaviour
             var component = bomb.GetComponent<Bomb>();
             component.Exploded += (a) => { bombs.Remove(component); };
             bombs.Add(component);
-            Debug.Log("Bomb spawned at " + x + ", " + z);
+            // Debug.Log("Bomb spawned at " + x + ", " + z);
         }
     }
 
