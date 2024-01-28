@@ -326,7 +326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e7efaff7693e45a69463d14bdbc5ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
+  _speed: 4
   _maxHealth: 1
   _rotationSpeed: 500
   _slapCooldown: 1
@@ -340,7 +340,7 @@ MonoBehaviour:
   _bombPickupEventReceiver: {fileID: 1240975940526495746}
   _bombAttachTransform: {fileID: 6979625725632973396}
   movementDirection: {x: 0, y: 0}
-  MainPlayerDie:
+  CharacterDie:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &2180749166518579565
@@ -361,6 +361,7 @@ MonoBehaviour:
   pushTime: 0.5
   lerpDuration: 0.2
   handTransform: {fileID: 4745994513383216378}
+  ghost: {fileID: 0}
   onSlap:
     m_PersistentCalls:
       m_Calls: []

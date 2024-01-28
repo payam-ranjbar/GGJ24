@@ -18,6 +18,7 @@ public class Bomb : MonoBehaviour
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private CollisionEventReceiver _charactersReceiver;
     [SerializeField] private Collider _collider;
+    [SerializeField] private GameObject _explosionParticle;
 
     public event Action<Explosion> Exploded;
     public UnityEvent ExplodedEvent;
@@ -74,6 +75,7 @@ public class Bomb : MonoBehaviour
     private void Start()
     {
         _currentLifeTime = 0f;
+        GameObject.Instantiate(_explosionParticle, _rigidbody.transform);
         SpawnEvent?.Invoke();
     }
 
@@ -129,6 +131,7 @@ public class Bomb : MonoBehaviour
 
         ExplodedEvent?.Invoke();
         enabled = false;
+        GameObject.Instantiate(_explosionParticle, _rigidbody.transform.position, _rigidbody.transform.rotation);
         Destroy(gameObject, destroyTime);
         //Debug.Log("Exploded by count down!");
     }
