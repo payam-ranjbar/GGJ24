@@ -22,6 +22,7 @@ public class Bomb : MonoBehaviour
     private List<CharacterController> _charactersInBlastZone = new List<CharacterController>();
 
     private CharacterController _character = null;
+    public new Transform transform => _rigidbody.transform;
 
     private void Awake()
     {
