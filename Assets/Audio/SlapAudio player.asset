@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: SlapAudio player
   m_EditorClassIdentifier: 
   AudioCommand: 9
+  Group: {fileID: 4952445246620450371, guid: 27b2c281ed15dea4fbe0a1aa6c3163e1, type: 2}
   Volume: 1
   AudioClip: {fileID: 8300000, guid: 367bf223d6dfcb94f89727c323d3dfb1, type: 3}

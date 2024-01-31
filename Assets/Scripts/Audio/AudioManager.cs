@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Audio;
 
 namespace DefaultNamespace
 {
@@ -9,6 +10,7 @@ namespace DefaultNamespace
     {
         public int AudioChannelCount = 5;
         public static AudioManager Instance { get; private set; }
+        public AudioMixerGroup sfxGroup;
         public AudioSource BackGroundMusic;
         public List<AudioClipSettings> AudioClips = new List<AudioClipSettings>();
         private List<AudioChannel> _channels = new List<AudioChannel>();
@@ -42,6 +44,7 @@ namespace DefaultNamespace
             var audioSettings = GetAudioClip(audioCommand);
             if (audioSettings != null)
             {
+                
                 channel.Play(audioSettings);
             }
         }

@@ -25,6 +25,8 @@ public class BombSpawnSystem : MonoBehaviour
     public static BombSpawnSystem instance = null;
 
 
+    public bool Active;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -40,6 +42,7 @@ public class BombSpawnSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!Active) return;
         UpdateSpots();
         _lastSpawnTime += Time.deltaTime;
         if (_lastSpawnTime >= Frequency)

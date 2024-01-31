@@ -21,6 +21,7 @@ public class AiBehaviour : MonoBehaviour
     private List<CharacterController> _others = new List<CharacterController>();
     private float _throwCooldown = 0.0f;
 
+    public bool active;
     private void OnValidate()
     {
         if (_rootIdentifier == null)
@@ -59,6 +60,8 @@ public class AiBehaviour : MonoBehaviour
 
     public void Update()
     {
+        if(!active) return;
+        
         var deltaTime = Time.deltaTime;
 
         for (int i = _others.Count - 1; i >= 0; --i)

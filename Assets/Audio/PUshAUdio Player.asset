@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AudioCommand: 10
   Volume: 0.516
-  AudioClip: {fileID: 8300000, guid: 061d146da4d2f8247b4f448d4bde2ec7, type: 3}
+  AudioClip: {fileID: 8300000, guid: fa74e279deb03814cb5bcd58c45046c3, type: 3}

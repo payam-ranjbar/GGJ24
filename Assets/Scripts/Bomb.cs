@@ -131,7 +131,7 @@ public class Bomb : MonoBehaviour
         {
             AudioManager.Instance.Play(AudioCommand.BombExplosion);
         }
-        
+        CameraManager.Instance.ExplosiveEffect();
         TakeDamage();
 
         ExplodedEvent?.Invoke();

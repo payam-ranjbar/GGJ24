@@ -1,7 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using DefaultNamespace;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 public class CharacterAnimation : MonoBehaviour
 {
@@ -9,7 +12,6 @@ public class CharacterAnimation : MonoBehaviour
     public Animator animator;
     public float slapTime = 1f;
     public float pushTime = 0.5f;
-    
     private bool _isRunning;
     private bool _slapped;
     private bool _picking;
@@ -44,13 +46,21 @@ public class CharacterAnimation : MonoBehaviour
         set => _picking = value;
     }
 
+    private void Awake()
+    {
+        // RotateRandomDirection();
+    }
+
     private void Start()
     {
         handStartPos = handTransform.position;
         handStartRot = handTransform.rotation.eulerAngles;
         handStartScale = handTransform.localScale;
+        
     }
 
+
+    
     public void Die(Vector3 position, Quaternion rotation)
     {
         var deadGhost = Instantiate(ghost, position, rotation);
@@ -107,10 +117,10 @@ public class CharacterAnimation : MonoBehaviour
         {
             AudioManager.Instance.Play(AudioCommand.PushPlayer);
 
-            if(ProbablityExtentions.Luck(.4f))
+            if(ProbablityExtentions.Luck(.6f))
              CameraManager.Instance.HitEffect();
             
-            if(ProbablityExtentions.Luck(.1f))
+            if(ProbablityExtentions.Luck(.9f))
                 CameraManager.Instance.ScreenShake();
 
 
@@ -131,7 +141,7 @@ public class CharacterAnimation : MonoBehaviour
     public void Update()
     {
         animator.SetBool("Picking", _picking);
-
+        
         if (_slapped)
         {
             StartSlapTimer();
@@ -255,4 +265,9 @@ public class CharacterAnimation : MonoBehaviour
   
 
     #endregion
+
+    public void SetOffestCycle()
+    {
+        // animator.GetCurrentAnimatorClipInfo(0)[0]
+    }
 }

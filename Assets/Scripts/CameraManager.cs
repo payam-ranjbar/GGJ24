@@ -7,6 +7,7 @@ public class CameraManager : MonoBehaviour
     public static CameraManager Instance { get; private set; }
      public CinemachineVirtualCamera mainCam;
     public float zoomedFOV = 30f; // Adjust as needed
+    public float zoomedDeathFOV = 20f; // Adjust as needed
     public float originalFOV; // Will be set to the initial FOV on Start
     public float zoomInDuration = 0.5f;
     public float zoomOutDuration = 1.0f;
@@ -20,6 +21,8 @@ public class CameraManager : MonoBehaviour
     public CinemachineVirtualCamera witnessCam2;
     public CinemachineVirtualCamera witnessCam3;
     private CinemachineVirtualCamera[] _witnessCameras;
+    [SerializeField] private float shakePower = 0.3f;
+    [SerializeField] private float deathShakePower = 1f;
 
 
     void Start()
@@ -29,13 +32,14 @@ public class CameraManager : MonoBehaviour
     }
     
 
-    IEnumerator ZoomCoroutine()
+    IEnumerator ZoomCoroutine(float fov = 0f)
     {
+        if (fov == 0f) fov = zoomedFOV;
         // Set flag to prevent spamming
         isZooming = true;
 
         // Zoom in
-        yield return ZoomFOV(zoomedFOV, zoomInDuration);
+        yield return ZoomFOV(fov, zoomInDuration);
 
 
         // Zoom out to the original FOV
@@ -86,9 +90,23 @@ public class CameraManager : MonoBehaviour
          StartCoroutine(ZoomCoroutine());
     }
 
+    public void ExplosiveEffect()
+    {
+        impulse.GenerateImpulse(0.9f);
+
+    }
+    public void DeathEffect()
+    {
+        if (!isZooming)
+        {
+            StartCoroutine(ZoomCoroutine(zoomedDeathFOV));
+        }
+        impulse.GenerateImpulse(deathShakePower);
+    }
+
     public void ScreenShake()
     {
-        impulse.GenerateImpulse(0.1f);
+        impulse.GenerateImpulse(shakePower);
     }
     
     

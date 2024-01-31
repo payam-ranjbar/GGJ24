@@ -300,6 +300,7 @@ MonoBehaviour:
   _escapeDuration: 2
   _rootIdentifier: {fileID: 1310049997902871773}
   _characterController: {fileID: 8140922282989108290}
+  active: 0
 --- !u!114 &6414187014097652635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,6 +340,7 @@ MonoBehaviour:
   _slapEventReceiver: {fileID: 4603919471776829835}
   _bombPickupEventReceiver: {fileID: 1240975940526495746}
   _bombAttachTransform: {fileID: 6979625725632973396}
+  _isPlayer: 0
   movementDirection: {x: 0, y: 0}
   CharacterDie:
     m_PersistentCalls:
@@ -716,6 +718,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6973442152306435020, guid: cd30a7f34ccb1544a8b7de90f50a3eb0,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 330c819c88cd40344885f867095ca57a, type: 2}
     - target: {fileID: 8976653428408807162, guid: cd30a7f34ccb1544a8b7de90f50a3eb0,
         type: 3}
       propertyPath: m_LocalScale.x

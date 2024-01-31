@@ -67,6 +67,30 @@ public class CharacterController : MonoBehaviour
 
     public UnityEvent CharacterDie;
     
+    [SerializeField] private float footStepInterval;
+    [SerializeField] private float footStepTimer;
+    [SerializeField] private AudioSource footStepAudio;
+
+    
+    private void PlayFootstep()
+    {
+
+
+        if(footStepAudio ==  null) return;
+        Debug.Log("not");
+
+        if (footStepTimer <= footStepInterval)
+        {
+            footStepTimer += Time.deltaTime;
+        }
+        else
+        {
+            footStepAudio.Play();
+            Debug.Log("played");
+            footStepTimer = 0f;
+        }
+        
+    }
     private void OnValidate()
     {
         if (_rootIdentifier == null)
@@ -87,8 +111,19 @@ public class CharacterController : MonoBehaviour
     {
         _characterAnimation = GetComponent<CharacterAnimation>();
         OnValidate();
+        _characterAnimation.SetOffestCycle();
     }
 
+    public void RotateRandomDirection()
+    {
+        Vector3 randomDirection = Random.onUnitSphere;
+        randomDirection.y = 0; // Keep the rotation in the horizontal plane
+
+        Quaternion targetRotation = Quaternion.LookRotation(randomDirection, Vector3.up);
+
+        // Snap to the target rotation immediately
+        _rotation = targetRotation;
+    }
     // Start is called before the first frame update
     private void Start()
     {
@@ -96,11 +131,19 @@ public class CharacterController : MonoBehaviour
         _slapEventReceiver.triggerExitAction += SlapTriggerExit;
 
         _bombPickupEventReceiver.triggerEnterAction += BombPickupTriggerEnter;
+        if (!_isPlayer)
+        {
+            RotateRandomDirection();
+        }
     }
 
     private void Update()
     {
         _characterAnimation.IsPicking = _bomb != null;
+        if (_isRunning)
+        {
+            PlayFootstep();
+        }
 
     }
 
@@ -127,15 +170,18 @@ public class CharacterController : MonoBehaviour
         }
     }
 
+    private bool _isRunning;
     private void SetVelocity(Vector2 velocity)
     {
         _rigidbody.velocity = new Vector3(velocity.x, _rigidbody.velocity.y, velocity.y);
         if (velocity.sqrMagnitude > 0.0f)
         {
+            _isRunning = true;
             _characterAnimation.Run();
         }
         else
         {
+            _isRunning = false;
             _characterAnimation.Idle();
         }
     }

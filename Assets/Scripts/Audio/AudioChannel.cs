@@ -7,6 +7,7 @@ namespace DefaultNamespace
     {
         private AudioSource _audioSource;
         public bool IsPlaying => _audioSource.isPlaying;
+        public AudioSource source => _audioSource;
 
         private void Awake()
         {
@@ -15,6 +16,7 @@ namespace DefaultNamespace
 
         public void Play(AudioClipSettings audioClip)
         {
+            _audioSource.outputAudioMixerGroup = audioClip.Group;
             _audioSource.PlayOneShot(audioClip.AudioClip, audioClip.Volume);
         }
 
