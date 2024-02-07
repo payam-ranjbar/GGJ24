@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: SlapAudio
   m_EditorClassIdentifier: 
   AudioCommand: 1
+  Group: {fileID: 0}
   Volume: 0.81
-  AudioClip: {fileID: 8300000, guid: 892e089a83d89934fae104627a15cb00, type: 3}
+  AudioClip: {fileID: 8300000, guid: 1ca2fa33384ae45dcad3c48798fefc5f, type: 3}

@@ -82,7 +82,7 @@ public class CharacterAnimation : MonoBehaviour
     public void Idle()
     {
         if(!_isRunning) return;
-        AudioManager.Instance.Play(AudioCommand.Idle);
+        //AudioManager.Instance.Play(AudioCommand.Idle);
         onIdle?.Invoke();
         facialFeatures.Blinking();
         _isRunning = false;
@@ -122,14 +122,10 @@ public class CharacterAnimation : MonoBehaviour
             
             if(ProbablityExtentions.Luck(.9f))
                 CameraManager.Instance.ScreenShake();
-
-
         }
         else
         {
             AudioManager.Instance.Play(AudioCommand.Push);
-
-            
         }
         onPushed?.Invoke();
         _pushed = true;

@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: BombExplosionAudio
   m_EditorClassIdentifier: 
   AudioCommand: 0
-  Volume: 1
-  AudioClip: {fileID: 8300000, guid: 90aea066458f7bf4290e97c876459e89, type: 3}
+  Group: {fileID: 0}
+  Volume: 0.5141274
+  AudioClip: {fileID: 8300000, guid: c7f66f497b3114063975fab36376bdef, type: 3}

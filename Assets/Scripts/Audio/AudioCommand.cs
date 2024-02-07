@@ -11,5 +11,6 @@ public enum AudioCommand
     Idle,
     StartRun,
     SlapPlayer,
-    PushPlayer
+    PushPlayer,
+    Spawning
 }

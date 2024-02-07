@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using DefaultNamespace;
 using UnityEngine;
 
 public class BombSpawnSystem : MonoBehaviour
@@ -87,6 +88,7 @@ public class BombSpawnSystem : MonoBehaviour
             var component = bomb.GetComponent<Bomb>();
             component.Exploded += (a) => { bombs.Remove(component); };
             bombs.Add(component);
+            AudioManager.Instance.Play(AudioCommand.Spawning);
             // Debug.Log("Bomb spawned at " + x + ", " + z);
         }
     }

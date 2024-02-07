@@ -5,6 +5,7 @@ public class StartScreenSceneManager : MonoBehaviour
 {
     public GameObject StartWindow;
     public GameObject TutorialWindow;
+    public GameObject SettingsWindow;
     
     private void Awake()
     {
@@ -16,6 +17,19 @@ public class StartScreenSceneManager : MonoBehaviour
     {
         TutorialWindow.SetActive(true);
         StartWindow.SetActive(false);
+        SettingsWindow.SetActive(false);
+    }
+
+    public void GoToSettingsScreen()
+    {
+        SettingsWindow.SetActive(true);
+        StartWindow.SetActive(false);
+    }
+    
+    public void GoToStartScreen()
+    {
+        StartWindow.SetActive(true);
+        SettingsWindow.SetActive(false);
     }
 
     public void GotoMainGame()

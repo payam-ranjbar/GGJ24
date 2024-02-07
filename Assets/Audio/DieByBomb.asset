@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2297691f439447f48789741dd9d42186, type: 3}
   m_Name: DieByBomb
   m_EditorClassIdentifier: 
-  AudioCommand: 6
+  AudioCommand: 3
+  Group: {fileID: 0}
   Volume: 0.836
-  AudioClip: {fileID: 8300000, guid: 90aea066458f7bf4290e97c876459e89, type: 3}
+  AudioClip: {fileID: 8300000, guid: 8587b4678cea844358a539da2ddfb454, type: 3}

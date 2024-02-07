@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2297691f439447f48789741dd9d42186, type: 3}
+  m_Name: Spawning
+  m_EditorClassIdentifier: 
+  AudioCommand: 11
+  Group: {fileID: 0}
+  Volume: 1
+  AudioClip: {fileID: 8300000, guid: 4ee5f1b0c54b64b85a3e32ddd27d91cf, type: 3}

@@ -126,14 +126,22 @@ public class Bomb : MonoBehaviour
             Radius = ExplosionRadius,
             Position = transform.position
         });
+        
+        CameraManager.Instance.ExplosiveEffect();
+        var damageTaken = TakeDamage();
 
         if (AudioManager.Instance != null)
         {
-            AudioManager.Instance.Play(AudioCommand.BombExplosion);
+            if (damageTaken)
+            {
+                AudioManager.Instance.Play(AudioCommand.Hit);
+            }
+            else
+            {
+                AudioManager.Instance.Play(AudioCommand.BombExplosion);    
+            }            
         }
-        CameraManager.Instance.ExplosiveEffect();
-        TakeDamage();
-
+        
         ExplodedEvent?.Invoke();
         enabled = false;
         GameObject.Instantiate(_explosionParticle, _rigidbody.transform.position, _rigidbody.transform.rotation);
@@ -170,12 +178,14 @@ public class Bomb : MonoBehaviour
         }
     }
 
-    private void TakeDamage()
+    private bool TakeDamage()
     {
+        var damageTaken = false;
         foreach (var otherCharacter in _charactersInBlastZone)
         {
-            var damageTaken = otherCharacter.TakeDamage(ExplosionForce);
+            damageTaken = otherCharacter.TakeDamage(ExplosionForce);
         }
+        return damageTaken;
     }
 
 }

@@ -58,6 +58,7 @@ public class CharacterController : MonoBehaviour
     private Quaternion _rotation = Quaternion.identity;
 
     private Bomb _bomb = null;
+    private float sfxVolume = DefaultSettings.SFXVolume;
     public bool hasBomb => _bomb != null;
 
     private bool _destroyed = false;
@@ -74,10 +75,8 @@ public class CharacterController : MonoBehaviour
     
     private void PlayFootstep()
     {
-
-
-        if(footStepAudio ==  null) return;
-        Debug.Log("not");
+        if(footStepAudio == null) return;
+        //Debug.Log("not");
 
         if (footStepTimer <= footStepInterval)
         {
@@ -86,10 +85,9 @@ public class CharacterController : MonoBehaviour
         else
         {
             footStepAudio.Play();
-            Debug.Log("played");
+            //Debug.Log("played");
             footStepTimer = 0f;
         }
-        
     }
     private void OnValidate()
     {
@@ -112,6 +110,11 @@ public class CharacterController : MonoBehaviour
         _characterAnimation = GetComponent<CharacterAnimation>();
         OnValidate();
         _characterAnimation.SetOffestCycle();
+        if (footStepAudio != null)
+        {
+            sfxVolume = PlayerPrefs.GetFloat("SFXVolume", DefaultSettings.SFXVolume);
+            footStepAudio.volume = sfxVolume;
+        }
     }
 
     public void RotateRandomDirection()

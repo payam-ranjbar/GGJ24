@@ -21,9 +21,12 @@ public class MainGameScreenSceneManager : MonoBehaviour
     public UnityEvent onStart;
 
     private bool lost;
+    private float musicVolume;
     private void Awake()
     {
         Time.timeScale = 1;
+        musicVolume = PlayerPrefs.GetFloat("MusicVolume", DefaultSettings.MusicVolume);
+        musicIntro.volume = musicVolume;
     }
 
     private void Update()
@@ -34,7 +37,6 @@ public class MainGameScreenSceneManager : MonoBehaviour
             StartMusic();
             CameraManager.Instance.ActivateMainCamera();
             onStart?.Invoke();
-
         }
     }
 
@@ -52,7 +54,7 @@ public class MainGameScreenSceneManager : MonoBehaviour
     {
         // StartCoroutine(FadeAudioSources());
         musicIntro.DOFade(0f, fadeDuration).SetEase(fadeCurve);
-        music.DOFade(1f, fadeDuration).SetEase(fadeCurve);
+        music.DOFade(musicVolume, fadeDuration).SetEase(fadeCurve);
     }
 
     public void StopMusic()
@@ -60,7 +62,7 @@ public class MainGameScreenSceneManager : MonoBehaviour
         var seq = DOTween.Sequence();
         seq.Append(music.DOFade(0f, fadeDuration).SetEase(fadeCurve))
             .Join(music.DOPitch(0.5f, 0.6f))
-            .Join(musicIntro.DOFade(1f, fadeDuration).SetEase(fadeCurve));
+            .Join(musicIntro.DOFade(musicVolume, fadeDuration).SetEase(fadeCurve));
     }
 
     private IEnumerator FadeAudioSources(bool toMusic = true)

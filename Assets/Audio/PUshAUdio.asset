@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: PUshAUdio
   m_EditorClassIdentifier: 
   AudioCommand: 4
-  Volume: 0.81
-  AudioClip: {fileID: 8300000, guid: 137baffb50f414ec88854db1612dcad4, type: 3}
+  Group: {fileID: 0}
+  Volume: 0.4
+  AudioClip: {fileID: 8300000, guid: 045a135f7522f455585820fda706589d, type: 3}

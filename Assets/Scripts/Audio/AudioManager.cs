@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Matchbox;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -15,6 +16,8 @@ namespace DefaultNamespace
         public List<AudioClipSettings> AudioClips = new List<AudioClipSettings>();
         private List<AudioChannel> _channels = new List<AudioChannel>();
 
+        private float _audioChannelVolume = DefaultSettings.SFXVolume;
+
         private void Awake()
         {
             if (Instance == null)
@@ -28,7 +31,7 @@ namespace DefaultNamespace
                     _channels.Add(audioObject);
                 }
             }
-
+            _audioChannelVolume = PlayerPrefs.GetFloat("SoundVolume", DefaultSettings.SFXVolume);
             DontDestroyOnLoad(this);
         }
 
@@ -37,14 +40,14 @@ namespace DefaultNamespace
             var channel = GetAvailableChannel();
             if (channel == null)
             {
-                Debug.LogWarning("No available audio channel");
+                Debug.LogWarning("No available audio channel for command: " + audioCommand);
                 return;
             }
             
             var audioSettings = GetAudioClip(audioCommand);
             if (audioSettings != null)
             {
-                
+                audioSettings.Volume = _audioChannelVolume;
                 channel.Play(audioSettings);
             }
         }
